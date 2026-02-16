@@ -48,6 +48,7 @@ export default defineConfig([
       'vue/multi-word-component-names': 'off',
       // https://eslint.org/docs/latest/rules/
       'no-undef': 'error',
+      'no-unused-vars': 'off',
     },
   },
 

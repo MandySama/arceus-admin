@@ -13,12 +13,16 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "axios": "^1.13.5",
+    "element-plus": "^2.13.2",
     "pinia": "^3.0.4",
     "vue": "^3.5.27",
     "vue-router": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
+    "@iconify-json/ep": "^1.2.3",
     "@vitejs/plugin-legacy": "6.1.1",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vitejs/plugin-vue-jsx": "^5.1.3",
@@ -30,7 +34,12 @@
     "globals": "^17.3.0",
     "npm-run-all2": "^8.0.4",
     "oxlint": "~1.42.0",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "prettier": "3.8.1",
+    "sass": "^1.97.3",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^31.0.0",
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.5"
   },
