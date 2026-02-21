@@ -10,6 +10,8 @@ import persist from 'pinia-plugin-persistedstate'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import { removeAppLoading } from './utils/remove-app-loading'
+
 const app = createApp(App)
 
 app.use(createPinia().use(persist))
@@ -20,3 +22,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.mount('#app')
+
+removeAppLoading()

@@ -13,6 +13,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
+import { injectAppLoading } from './src/plugins'
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   base: mode === 'production' ? './' : '/',
@@ -34,13 +36,14 @@ export default defineConfig(({ mode }) => ({
         // https://icon-sets.iconify.design/
         IconsResolver({
           prefix: 'i',
-          enabledCollections: ['ep'],
+          enabledCollections: ['ant-design'],
         }),
       ],
     }),
     Icons({
       autoInstall: true,
     }),
+    injectAppLoading(),
   ],
   resolve: {
     alias: {
@@ -49,5 +52,6 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     host: '0.0.0.0',
+    // open: true,
   },
 }))

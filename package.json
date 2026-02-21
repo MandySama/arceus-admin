@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@iconify-json/ep": "^1.2.3",
+    "@iconify-json/ant-design": "^1.2.5",
     "@vitejs/plugin-legacy": "6.1.1",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vitejs/plugin-vue-jsx": "^5.1.3",
