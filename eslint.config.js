@@ -6,6 +6,7 @@ import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from 'eslint-config-prettier/flat'
 
 import pluginPrettier from 'eslint-plugin-prettier'
+import autoImport from './.eslintrc-auto-import.js'
 
 export default defineConfig([
   {
@@ -28,6 +29,8 @@ export default defineConfig([
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
+  skipFormatting,
+
   {
     plugins: {
       prettier: pluginPrettier,
@@ -37,21 +40,28 @@ export default defineConfig([
       'prettier/prettier': [
         'warn',
         {
-          printWidth: 100,
+          printWidth: 120,
           semi: false,
           singleQuote: true,
           trailingComma: 'es5',
           endOfLine: 'auto',
         },
       ],
-      // https://eslint.vuejs.org/rules/
+      // https://eslint.vuejs.org/rules
       'vue/multi-word-component-names': 'off',
       'vue/valid-template-root': 'off',
-      // https://eslint.org/docs/latest/rules/
+      // https://eslint.org/docs/latest/rules
       'no-undef': 'error',
       'no-unused-vars': 'off',
     },
   },
 
-  skipFormatting,
+  {
+    languageOptions: {
+      globals: {
+        ...autoImport.globals,
+        process: true,
+      },
+    },
+  },
 ])
