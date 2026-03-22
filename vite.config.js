@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => {
         targets: ['defaults', 'not IE 11'],
       }),
       AutoImport({
-        imports: ['vue', 'vue-router'],
+        imports: ['vue', 'vue-router', 'pinia'],
         resolvers: [ElementPlusResolver()],
         eslintrc: {
           enabled: true,

@@ -15,7 +15,7 @@ const loginForm = reactive({
 const loginRules = {
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-  // code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
 }
 
 const title = import.meta.env.VITE_APP_TITLE
@@ -67,13 +67,14 @@ const handleLogin = () => {
       request
         .post('/login', { ...loginForm })
         .then(({ data }) => {
-          loading.value = false
           Cookie.set('token', data)
           router.push(route.query.redirect || '/index')
         })
         .catch(() => {
-          loading.value = false
           getCaptcha()
+        })
+        .finally(() => {
+          loading.value = false
         })
     }
   })
@@ -120,8 +121,8 @@ onMounted(() => {
         <el-checkbox class="!h-5 !mr-54" v-model="rememberMe">记住我</el-checkbox>
       </el-form-item>
       <el-form-item class="w-70">
-        <el-button :loading="loading" loading-icon="AdLoadingOutlined" @click="handleLogin">登 录</el-button>
-        <div v-if="registerEnabled" class="w-70 leading-5 text-right mt-[18px]">
+        <el-button :loading="loading" loading-icon="ad-LoadingOutlined" @click="handleLogin">登 录</el-button>
+        <div v-if="registerEnabled" class="w-full leading-5 text-right mt-[18px]">
           <router-link to="/register">注册</router-link>
         </div>
       </el-form-item>
@@ -136,7 +137,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(200deg, #e3c5eb, #a9c1ed);
-  overflow-y: hidden;
+  overflow: hidden;
 
   .login-form {
     background-color: #fff;

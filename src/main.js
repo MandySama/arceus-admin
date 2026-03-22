@@ -11,7 +11,7 @@ import persist from 'pinia-plugin-persistedstate'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import * as AntDesignIconsVue from '@ant-design/icons-vue'
 
-import { removeAppLoading } from './utils/remove-app-loading'
+import { removeAppLoading } from './plugins/inject-app-loading/remove-app-loading'
 
 const app = createApp(App)
 
