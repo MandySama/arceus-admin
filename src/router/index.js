@@ -11,6 +11,16 @@ import Layout from '@/views/layout/index.vue'
 
 NProgress.configure({ showSpinner: false })
 
+export const indexRoute = {
+  path: '/index',
+  component: () => import('@/views/index.vue'),
+  meta: { title: '首页' },
+}
+
+export const isIndexRoute = (item) => {
+  return item.path === indexRoute.path
+}
+
 const router = createRouter({
   history:
     location.protocol === 'file:'
@@ -23,54 +33,10 @@ const router = createRouter({
     },
     {
       path: '/',
+      name: 'Layout',
       component: Layout,
       redirect: '/index',
-      children: [
-        {
-          path: '/index',
-          component: () => import('@/views/index.vue'),
-        },
-      ],
-    },
-    {
-      path: '/admin',
-      component: Layout,
-      children: [
-        {
-          path: '/admin/user',
-          component: () => import('@/views/index.vue'),
-        },
-        {
-          path: '/admin/role',
-          component: () => import('@/views/index.vue'),
-        },
-        {
-          path: '/admin/menu',
-          component: () => import('@/views/index.vue'),
-        },
-      ],
-    },
-    {
-      path: '/system',
-      component: Layout,
-      children: [
-        {
-          path: '/system/dict',
-          component: () => import('@/views/index.vue'),
-        },
-        {
-          path: '/system/param',
-          component: () => import('@/views/index.vue'),
-        },
-        {
-          path: '/system/loginLog',
-          component: () => import('@/views/index.vue'),
-        },
-        {
-          path: '/system/operLog',
-          component: () => import('@/views/index.vue'),
-        },
-      ],
+      children: [indexRoute],
     },
   ],
 })
@@ -82,12 +48,13 @@ router.beforeEach((to, from, next) => {
       next('/index')
     } else {
       const userInfoStore = useUserInfoStore()
-      const { user } = storeToRefs(userInfoStore)
-      if (user.value === null) {
+      const { user, routeList } = storeToRefs(userInfoStore)
+      // if (user.value === null) {
+      if (routeList.value.length === 0) {
         request.get('/userInfo').then(({ data }) => {
           const { routeList } = data
           userInfoStore.setRouteList(routeList)
-          next()
+          next({ ...to, replace: true })
         })
       } else {
         next()

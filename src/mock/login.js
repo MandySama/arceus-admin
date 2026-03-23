@@ -11,24 +11,18 @@ const captchaList = [
   'data:image/png;base64,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',
 ]
 
-export const indexRoute = {
-  menuId: 0,
-  menuName: '首页',
-  icon: 'ad-HomeOutlined',
-  routePath: '/index',
-  children: null,
-}
-
 const routeList = [
   {
     menuId: 1,
     menuName: '权限管理',
+    menuType: 'dir',
     icon: 'ad-ApartmentOutlined',
     routePath: '/admin',
     children: [
       {
         menuId: 101,
         menuName: '用户管理',
+        menuType: 'menu',
         icon: 'ad-UserOutlined',
         routePath: '/admin/user',
         children: null,
@@ -36,6 +30,7 @@ const routeList = [
       {
         menuId: 102,
         menuName: '角色管理',
+        menuType: 'menu',
         icon: 'ad-TeamOutlined',
         routePath: '/admin/role',
         children: null,
@@ -43,6 +38,7 @@ const routeList = [
       {
         menuId: 103,
         menuName: '菜单管理',
+        menuType: 'menu',
         icon: 'ad-AppstoreOutlined',
         routePath: '/admin/menu',
         children: null,
@@ -52,12 +48,14 @@ const routeList = [
   {
     menuId: 2,
     menuName: '系统管理',
+    menuType: 'dir',
     icon: 'ep-Setting',
     routePath: '/system',
     children: [
       {
         menuId: 201,
         menuName: '字典管理',
+        menuType: 'menu',
         icon: 'ep-Collection',
         routePath: '/system/dict',
         children: null,
@@ -65,6 +63,7 @@ const routeList = [
       {
         menuId: 202,
         menuName: '参数管理',
+        menuType: 'menu',
         icon: 'ep-Operation',
         routePath: '/system/param',
         children: null,
@@ -72,12 +71,14 @@ const routeList = [
       {
         menuId: 3,
         menuName: '日志管理',
+        menuType: 'dir',
         icon: 'ep-Cloudy',
         routePath: '/system/log',
         children: [
           {
             menuId: 301,
             menuName: '登录日志',
+            menuType: 'menu',
             icon: 'ad-ContactsOutlined',
             routePath: '/system/loginLog',
             children: null,
@@ -85,6 +86,7 @@ const routeList = [
           {
             menuId: 302,
             menuName: '操作日志',
+            menuType: 'menu',
             icon: 'ep-Document',
             routePath: '/system/operLog',
             children: null,

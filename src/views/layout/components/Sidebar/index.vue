@@ -2,8 +2,8 @@
 import { useAppStore } from '@/stores/app'
 import { useUserInfoStore } from '@/stores/userInfo'
 
-import Logo from '../Logo/index.vue'
-import MenuItem from '../Menu/MenuItem.vue'
+import Logo from './Logo.vue'
+import MenuItem from './MenuItem.vue'
 
 const appStore = useAppStore()
 const { collapseSidebar: isCollapse } = storeToRefs(appStore)
@@ -19,7 +19,7 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
 <template>
   <el-aside class="sidebar-container" :class="{ 'collapse-sidebar': isCollapse }">
-    <logo :is-collapse="isCollapse" @click="isCollapse = !isCollapse"></logo>
+    <logo :is-collapse="isCollapse"></logo>
     <el-scrollbar>
       <el-menu
         class="!border-none"

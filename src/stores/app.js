@@ -3,8 +3,13 @@ export const useAppStore = defineStore(
   () => {
     const collapseSidebar = ref(false)
 
+    const toggleSidebar = (_collapseSidebar = !collapseSidebar.value) => {
+      collapseSidebar.value = _collapseSidebar
+    }
+
     return {
       collapseSidebar,
+      toggleSidebar,
     }
   },
   {

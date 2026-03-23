@@ -20,7 +20,7 @@ const title = import.meta.env.VITE_APP_TITLE
 
 <style scoped lang="scss">
 .logo-container {
-  height: 56px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
