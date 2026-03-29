@@ -1,12 +1,16 @@
 <script setup>
 import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
+import Search from './Search.vue'
 </script>
 
 <template>
   <el-header class="navbar-container">
     <hamburger></hamburger>
     <breadcrumb></breadcrumb>
+    <div class="ml-auto">
+      <search></search>
+    </div>
   </el-header>
 </template>
 

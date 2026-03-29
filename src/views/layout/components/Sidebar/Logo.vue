@@ -24,6 +24,5 @@ const title = import.meta.env.VITE_APP_TITLE
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--el-border-color-light);
 }
 </style>

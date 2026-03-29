@@ -23,10 +23,12 @@ const toggleSidebar = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #323639cc;
   border-radius: 6px;
   cursor: pointer;
 
   &:hover {
+    color: #18181b;
     background-color: #f4f4f5;
   }
 

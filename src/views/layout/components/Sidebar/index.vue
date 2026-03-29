@@ -1,5 +1,6 @@
 <script setup>
 import { useAppStore } from '@/stores/app'
+import { useResize } from '@/hooks/resize'
 import { useUserInfoStore } from '@/stores/userInfo'
 
 import Logo from './Logo.vue'
@@ -7,6 +8,8 @@ import MenuItem from './MenuItem.vue'
 
 const appStore = useAppStore()
 const { collapseSidebar: isCollapse } = storeToRefs(appStore)
+
+const { isMobile } = useResize()
 
 const route = useRoute()
 const activeMenu = computed(() => {
@@ -18,7 +21,7 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 </script>
 
 <template>
-  <el-aside class="sidebar-container" :class="{ 'collapse-sidebar': isCollapse }">
+  <el-aside class="sidebar-container" :class="{ 'collapse-sidebar': isCollapse, 'is-mobile': isMobile }">
     <logo :is-collapse="isCollapse"></logo>
     <el-scrollbar>
       <el-menu
@@ -36,13 +39,21 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
 <style scoped lang="scss">
 .sidebar-container {
-  width: 224px;
+  width: 200px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
   border-right: 1px solid var(--el-border-color-light);
 
   &.collapse-sidebar {
     width: 64px;
+  }
+
+  &.is-mobile {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
   }
 
   .el-scrollbar {
@@ -50,10 +61,6 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
     :deep(.el-scrollbar__bar).is-horizontal {
       display: none;
-    }
-
-    :deep(.el-scrollbar__bar).is-vertical {
-      right: 0;
     }
   }
 }

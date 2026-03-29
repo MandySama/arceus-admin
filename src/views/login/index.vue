@@ -122,7 +122,7 @@ onMounted(() => {
       </el-form-item>
       <el-form-item class="w-70">
         <el-button :loading="loading" loading-icon="ad-LoadingOutlined" @click="handleLogin">登 录</el-button>
-        <div v-if="registerEnabled" class="w-full leading-5 text-right mt-[18px]">
+        <div v-if="registerEnabled" class="w-full leading-5 text-right mt-4.5">
           <router-link to="/register">注册</router-link>
         </div>
       </el-form-item>
