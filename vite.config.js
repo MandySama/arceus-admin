@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => {
           // https://icon-sets.iconify.design
           IconsResolver({
             prefix: 'i',
-            enabledCollections: ['ant-design'],
+            enabledCollections: ['ant-design', 'lucide', 'mdi'],
           }),
         ],
       }),

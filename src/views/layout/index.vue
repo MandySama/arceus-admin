@@ -18,7 +18,11 @@ watch(
 
 watch(
   () => route.path,
-  () => isMobile.value && appStore.toggleSidebar()
+  () => {
+    if (isMobile.value && !collapseSidebar.value) {
+      appStore.toggleSidebar()
+    }
+  }
 )
 
 const toggleSidebar = () => {

@@ -1,4 +1,5 @@
 .el-menu {
+  --el-menu-text-color: #18181b;
   --el-menu-item-height: 48px;
   --el-menu-base-level-padding: 16px;
   --el-menu-level-padding: 16px;
@@ -30,14 +31,14 @@
 }
 
 .el-popper {
-  --el-popper-border-radius: 6px !important;
+  border-radius: 6px !important;
 
   &:has(.el-menu--vertical) {
     margin-left: 8px;
   }
 
   .el-menu {
-    border-radius: var(--el-popper-border-radius);
+    border-radius: 6px;
 
     .el-sub-menu {
       &.is-active {
@@ -45,6 +46,38 @@
           color: var(--el-menu-active-color);
         }
       }
+    }
+  }
+}
+
+.el-dialog {
+  border-radius: 8px !important;
+
+  &.is-fullscreen {
+    border-radius: 0 !important;
+  }
+
+  .el-dialog__headerbtn {
+    height: 24px;
+    right: 12px;
+    top: 12px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+
+    &:hover {
+      background-color: #f4f4f5;
+
+      .el-icon {
+        color: #18181b;
+      }
+    }
+
+    .el-icon,
+    &:focus .el-icon {
+      color: #323639cc;
     }
   }
 }
