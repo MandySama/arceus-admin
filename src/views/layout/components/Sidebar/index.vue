@@ -31,7 +31,7 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
         :collapse-transition="false"
         unique-opened
       >
-        <menu-item v-for="menu in menuList" :key="menu.routePath" :menu="menu"></menu-item>
+        <menu-item v-for="menu in menuList" :key="menu.routePath" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
   </el-aside>

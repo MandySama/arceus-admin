@@ -10,10 +10,10 @@ import Fullscreen from './Fullscreen.vue'
   <el-header class="navbar-container">
     <hamburger></hamburger>
     <breadcrumb></breadcrumb>
-    <div class="ml-auto flex items-center">
+    <div class="ml-auto flex items-center gap-x-1">
       <search></search>
-      <setting class="toolbar-item mr-1"></setting>
-      <fullscreen class="toolbar-item mr-1"></fullscreen>
+      <setting class="toolbar-item"></setting>
+      <fullscreen class="toolbar-item"></fullscreen>
     </div>
   </el-header>
 </template>

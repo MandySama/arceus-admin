@@ -133,8 +133,7 @@ export default [
   {
     url: '/api/userInfo',
     method: 'GET',
-    response: ({ headers }) => {
-      // headers.authorization !== undefined
+    response: () => {
       return {
         code: 1,
         data: {

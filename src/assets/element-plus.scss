@@ -1,25 +1,44 @@
 .el-menu {
-  --el-menu-text-color: #18181b;
   --el-menu-item-height: 48px;
   --el-menu-base-level-padding: 16px;
   --el-menu-level-padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
 
   &.el-menu--vertical {
+    padding-block: 2px;
+  }
+
+  &.el-menu--inline {
     padding-top: 2px;
+  }
 
-    &.el-menu--collapse {
-      --el-menu-icon-width: 16px;
-      width: 64px;
+  &.el-menu--collapse {
+    --el-menu-icon-width: 16px;
+    width: 64px;
 
-      .el-menu-tooltip__trigger {
-        width: calc(100% + 8px);
+    .el-menu-tooltip__trigger {
+      width: calc(100% + 8px);
+    }
+  }
+
+  &.el-menu--popup {
+    border-radius: 6px;
+    padding: 6px 0;
+
+    .el-sub-menu {
+      &.is-active {
+        .el-sub-menu__title {
+          color: var(--el-menu-active-color);
+        }
       }
     }
   }
 
   .el-menu-item,
   .el-sub-menu__title {
-    margin: 0 8px 2px;
+    margin: 0 8px;
     border-radius: 8px;
   }
 
@@ -36,18 +55,6 @@
   &:has(.el-menu--vertical) {
     margin-left: 8px;
   }
-
-  .el-menu {
-    border-radius: 6px;
-
-    .el-sub-menu {
-      &.is-active {
-        .el-sub-menu__title {
-          color: var(--el-menu-active-color);
-        }
-      }
-    }
-  }
 }
 
 .el-dialog {
@@ -55,11 +62,18 @@
 
   &.is-fullscreen {
     border-radius: 0 !important;
+    display: flex;
+    flex-direction: column;
+
+    .el-dialog__body {
+      min-height: 0;
+      flex: 1;
+    }
   }
 
   .el-dialog__headerbtn {
     height: 24px;
-    right: 12px;
+    right: 16px;
     top: 12px;
     width: 24px;
     display: flex;
@@ -75,8 +89,9 @@
       }
     }
 
-    .el-icon,
-    &:focus .el-icon {
+
+    &:focus .el-icon,
+    .el-icon {
       color: #323639cc;
     }
   }

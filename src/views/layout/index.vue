@@ -13,7 +13,9 @@ const route = useRoute()
 
 watch(
   () => isMobile.value,
-  () => appStore.toggleSidebar(isMobile.value)
+  () => {
+    appStore.toggleSidebar(isMobile.value)
+  }
 )
 
 watch(

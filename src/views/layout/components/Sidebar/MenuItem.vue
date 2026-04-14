@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  menu: {
+  item: {
     type: Object,
     required: true,
   },
@@ -8,22 +8,22 @@ defineProps({
 </script>
 
 <template>
-  <el-sub-menu v-if="menu.children?.length > 0" :index="menu.routePath">
+  <el-sub-menu v-if="item.children?.length > 0" :index="item.routePath">
     <template #title>
       <el-icon :size="14">
-        <component :is="menu.icon"></component>
+        <component :is="item.icon"></component>
       </el-icon>
-      <span>{{ menu.menuName }}</span>
+      <span>{{ item.menuName }}</span>
     </template>
-    <menu-item v-for="subMenu in menu.children" :key="subMenu.routePath" :menu="subMenu"></menu-item>
+    <menu-item v-for="menu in item.children" :key="menu.routePath" :item="menu"></menu-item>
   </el-sub-menu>
-  <router-link v-else :to="menu.routePath">
-    <el-menu-item :index="menu.routePath">
+  <router-link v-else :to="item.routePath">
+    <el-menu-item :index="item.routePath">
       <el-icon :size="14">
-        <component :is="menu.icon"></component>
+        <component :is="item.icon"></component>
       </el-icon>
       <template #title>
-        <span>{{ menu.menuName }}</span>
+        <span>{{ item.menuName }}</span>
       </template>
     </el-menu-item>
   </router-link>

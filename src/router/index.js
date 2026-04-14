@@ -48,8 +48,7 @@ router.beforeEach((to, from, next) => {
       next('/index')
     } else {
       const userInfoStore = useUserInfoStore()
-      const { user, routeList } = storeToRefs(userInfoStore)
-      // if (user.value === null) {
+      const { routeList } = storeToRefs(userInfoStore)
       if (routeList.value.length === 0) {
         request.get('/userInfo').then(({ data }) => {
           const { routeList } = data

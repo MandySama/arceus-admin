@@ -9,7 +9,7 @@ const breadcrumbList = computed(() => {
 </script>
 
 <template>
-  <el-breadcrumb class="block max-lg:hidden">
+  <el-breadcrumb class="px-2 block max-lg:hidden">
     <el-breadcrumb-item v-for="breadcrumb in breadcrumbList" :key="breadcrumb.path">
       <router-link v-if="isIndexRoute(breadcrumb)" class="!font-normal" :to="breadcrumb.path">
         {{ breadcrumb.meta.title }}
@@ -20,11 +20,7 @@ const breadcrumbList = computed(() => {
 </template>
 
 <style scoped lang="scss">
-.el-breadcrumb {
-  padding: 0 8px;
-
-  :deep(.el-breadcrumb__separator) {
-    font-weight: 400;
-  }
+:deep(.el-breadcrumb__separator) {
+  font-weight: 400;
 }
 </style>
