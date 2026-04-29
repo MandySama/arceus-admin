@@ -1,22 +1,25 @@
 <script setup>
 import { useResize } from '@/hooks/resize'
 import { useUserInfoStore } from '@/stores/userInfo'
-import { onKeyStroke } from '@vueuse/core'
-
-const { isMobile } = useResize()
+import { onKeyStroke, useDebounceFn } from '@vueuse/core'
 
 const open = ref(false)
 
-const searchInputRef = ref()
+const { isMobile } = useResize()
+
+const searchRef = ref()
 
 const keyword = ref('')
+
+const userInfoStore = useUserInfoStore()
+const { routeList: menuList } = storeToRefs(userInfoStore)
+const searchItem = computed(() => {
+  return getSearchItem(menuList.value)
+})
 
 const searchResult = ref([])
 
 const activeIndex = ref(0)
-
-const userInfoStore = useUserInfoStore()
-const { routeList: menuList } = storeToRefs(userInfoStore)
 
 const router = useRouter()
 
@@ -24,13 +27,12 @@ watch(
   () => open.value,
   () => {
     if (open.value) {
-      requestAnimationFrame(() => {
-        searchInputRef.value.focus()
-      })
-    } else {
       keyword.value = ''
       searchResult.value = []
       activeIndex.value = 0
+      requestAnimationFrame(() => {
+        searchRef.value.focus()
+      })
     }
   }
 )
@@ -38,7 +40,7 @@ watch(
 watch(
   () => keyword.value,
   () => {
-    if (keyword.value) {
+    if (keyword.value.trim()) {
       handleSearch()
     } else {
       searchResult.value = []
@@ -47,22 +49,20 @@ watch(
   }
 )
 
-const handleSearch = () => {
-  const _keyword = keyword.value.trim()
-  if (_keyword === '') {
-    searchResult.value = []
-    activeIndex.value = 0
-  } else {
-    searchResult.value = [
-      menuList.value[0],
-      ...menuList.value[1].children,
-      menuList.value[2].children[0],
-      menuList.value[2].children[1],
-      ...menuList.value[2].children[2].children,
-    ]
-    activeIndex.value = 0
-  }
+const getSearchItem = (_menuList) => {
+  return _menuList.flatMap((item) => {
+    if (item.menuType === 'dir') {
+      return getSearchItem(item.children)
+    } else {
+      return item
+    }
+  })
 }
+
+const handleSearch = useDebounceFn(() => {
+  searchResult.value = menuList.value
+  activeIndex.value = 0
+}, 200)
 
 const onMouseenter = (index) => {
   activeIndex.value = index
@@ -116,8 +116,8 @@ onMounted(() => {
     @click="open = true"
   >
     <i-lucide-search class="size-4" />
-    <span class="hidden md:block">搜索</span>
-    <div class="px-1.5 py-1 hidden md:flex bg-white rounded-l-sm rounded-r-xl">
+    <span class="max-md:hidden md:block">搜索</span>
+    <div class="px-1.5 py-1 max-md:hidden md:flex bg-white rounded-l-sm rounded-r-xl">
       <kbd class="leading-none">Ctrl K</kbd>
     </div>
   </div>
@@ -125,7 +125,7 @@ onMounted(() => {
   <el-dialog
     style="--el-dialog-padding-primary: 0"
     v-model="open"
-    :width="600"
+    width="600px"
     top="10vh"
     :fullscreen="isMobile"
     destroy-on-close
@@ -134,39 +134,39 @@ onMounted(() => {
       <div class="px-4 py-2 flex items-center border-b-1 border-b-solid border-b-[#e4e4e7]">
         <i-lucide-search class="size-4 mr-2 text-[#71717a]" />
         <input
-          ref="searchInputRef"
+          ref="searchRef"
           class="w-4/5 p-1.5 pl-0 text-sm placeholder:text-[#71717a] text-[#323639] outline-none"
           v-model="keyword"
           placeholder="搜索菜单"
         />
       </div>
     </template>
-    <div class="min-h-40 max-h-[284px] max-md:h-full md:overflow-y-auto">
-      <div v-if="searchResult.length === 0" class="h-40 flex justify-center items-center text-xs text-[#71717a]">
+    <div class="md:min-h-[148px] md:max-h-[284px] max-md:h-full py-3 overflow-y-hidden">
+      <div v-if="searchResult.length === 0" class="h-[124px] flex justify-center items-center text-xs text-[#71717a]">
         暂无搜索结果
       </div>
-      <ul v-if="searchResult.length > 0" class="h-full px-4 py-3 flex flex-col gap-y-3 max-md:overflow-y-auto">
-        <li
-          v-for="(item, index) in searchResult"
-          :key="item.routePath"
-          class="px-4 py-4 flex items-center gap-x-2 bg-[#f4f4f5] text-[#323639] rounded-lg cursor-pointer"
-          :class="index === activeIndex && ['!bg-(--el-color-primary)', 'text-white']"
-          :data-search-result-item="index"
-          @mouseenter="onMouseenter(index)"
-          @click="handleEnter"
-        >
-          <el-icon :size="16">
-            <component :is="item.icon"></component>
-          </el-icon>
-          <span class="flex-1 text-base">{{ item.menuName }}</span>
-          <el-icon :size="16" class="hover:scale-120 hover:!text-[#fafafa]">
-            <ep-Close />
-          </el-icon>
-        </li>
-      </ul>
+      <el-scrollbar v-else :max-height="isMobile ? '' : '260px'">
+        <ul class="h-full px-4 flex flex-col gap-y-3">
+          <li
+            v-for="(item, index) in searchResult"
+            :key="item.routePath"
+            class="px-4 py-4 flex items-center gap-x-2 bg-[#f4f4f5] text-[#323639] rounded-lg cursor-pointer"
+            :class="index === activeIndex && ['!bg-(--el-color-primary)', 'text-white']"
+            :data-search-result-item="index"
+            @mouseenter="onMouseenter(index)"
+            @click="handleEnter"
+          >
+            <el-icon :size="16">
+              <component :is="item.icon"></component>
+            </el-icon>
+            <span class="flex-1 text-base">{{ item.menuName }}</span>
+            <i-mdi-arrow-left-bottom class="size-4" />
+          </li>
+        </ul>
+      </el-scrollbar>
     </div>
     <template #footer>
-      <div class="px-4 py-1.5 flex items-center gap-x-4 border-t-1 border-t-solid border-t-[#e4e4e7]">
+      <div class="px-4 py-2 flex items-center gap-x-4 border-t-1 border-t-solid border-t-[#e4e4e7]">
         <div class="search-modal-footer-item">
           <div class="search-modal-footer-icon">
             <i-mdi-arrow-left-bottom />
@@ -194,6 +194,13 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+:deep(.el-scrollbar__bar) {
+  &.is-vertical {
+    top: 0;
+    right: 10px;
+  }
+}
+
 .search-modal-footer-item {
   display: flex;
   align-items: center;

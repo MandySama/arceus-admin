@@ -59,8 +59,10 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
   .el-scrollbar {
     flex: 1;
 
-    :deep(.el-scrollbar__bar).is-horizontal {
-      display: none;
+    :deep(.el-scrollbar__bar) {
+      &.is-horizontal {
+        display: none;
+      }
     }
   }
 }

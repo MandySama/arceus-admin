@@ -137,7 +137,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(200deg, #e3c5eb, #a9c1ed);
-  overflow: hidden;
+  overflow-y: hidden;
 
   .login-form {
     background-color: #fff;

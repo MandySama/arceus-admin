@@ -9,7 +9,7 @@ const breadcrumbList = computed(() => {
 </script>
 
 <template>
-  <el-breadcrumb class="px-2 block max-lg:hidden">
+  <el-breadcrumb class="px-2 lg:block max-lg:hidden">
     <el-breadcrumb-item v-for="breadcrumb in breadcrumbList" :key="breadcrumb.path">
       <router-link v-if="isIndexRoute(breadcrumb)" class="!font-normal" :to="breadcrumb.path">
         {{ breadcrumb.meta.title }}

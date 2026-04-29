@@ -62,6 +62,7 @@
 
   &.is-fullscreen {
     border-radius: 0 !important;
+    overflow-y: hidden !important;
     display: flex;
     flex-direction: column;
 
