@@ -27,7 +27,7 @@ export const Cookie = {
           return item.value
         }
       } else {
-        return sessionStorage.getItem(key) ?? undefined
+        return sessionStorage.getItem(key) || undefined
       }
     } else {
       return Cookies.get(key)

@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) => {
     } else {
       const userInfoStore = useUserInfoStore()
       const { routeList } = storeToRefs(userInfoStore)
-      if (routeList.value.length === 0) {
+      if (!routeList.value.length) {
         request.get('/userInfo').then(({ data }) => {
           const { routeList } = data
           userInfoStore.setRouteList(routeList)

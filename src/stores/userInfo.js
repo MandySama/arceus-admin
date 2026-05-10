@@ -12,8 +12,6 @@ const indexRoute = {
 const viewModules = import.meta.glob('@/views/**/*.vue')
 
 export const useUserInfoStore = defineStore('userInfo', () => {
-  const user = ref(null)
-
   const routeList = ref([])
 
   const router = useRouter()
@@ -57,7 +55,6 @@ export const useUserInfoStore = defineStore('userInfo', () => {
   }
 
   return {
-    user,
     routeList,
     setRouteList,
   }

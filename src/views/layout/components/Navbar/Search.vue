@@ -1,7 +1,7 @@
 <script setup>
 import { useResize } from '@/hooks/resize'
 import { useUserInfoStore } from '@/stores/userInfo'
-import { onKeyStroke, useDebounceFn } from '@vueuse/core'
+import { onKeyStroke } from '@vueuse/core'
 
 const open = ref(false)
 
@@ -49,27 +49,37 @@ watch(
   }
 )
 
-const getSearchItem = (_menuList) => {
+const getSearchItem = (_menuList, parentName = '') => {
   return _menuList.flatMap((item) => {
     if (item.menuType === 'dir') {
-      return getSearchItem(item.children)
+      return getSearchItem(item.children, parentName || item.menuName)
     } else {
-      return item
+      return {
+        ...item,
+        fullName: parentName ? [parentName, '>', item.menuName] : [item.menuName],
+      }
     }
   })
 }
 
-const handleSearch = useDebounceFn(() => {
-  searchResult.value = menuList.value
+const handleSearch = () => {
+  searchResult.value = searchItem.value.filter((item) => item.menuName.includes(keyword.value))
   activeIndex.value = 0
-}, 200)
+}
 
 const onMouseenter = (index) => {
   activeIndex.value = index
 }
 
+const highlightName = (name, index) => {
+  return name.replace(
+    keyword.value,
+    `<mark class="bg-transparent ${activeIndex.value === index ? 'text-white underline underline-offset-4' : 'text-(--el-color-primary)'}">${keyword.value}</mark>`
+  )
+}
+
 const handleEnter = () => {
-  if (!open.value || searchResult.value.length === 0) return
+  if (!open.value || !searchResult.value.length) return
   open.value = false
   router.push(searchResult.value[activeIndex.value].routePath)
 }
@@ -80,7 +90,7 @@ const scrollToView = () => {
 }
 
 const handleArrowUp = () => {
-  if (!open.value || searchResult.value.length === 0) return
+  if (!open.value || !searchResult.value.length) return
   activeIndex.value--
   if (activeIndex.value < 0) {
     activeIndex.value = searchResult.value.length - 1
@@ -89,7 +99,7 @@ const handleArrowUp = () => {
 }
 
 const handleArrowDown = () => {
-  if (!open.value || searchResult.value.length === 0) return
+  if (!open.value || !searchResult.value.length) return
   activeIndex.value++
   if (activeIndex.value > searchResult.value.length - 1) {
     activeIndex.value = 0
@@ -142,7 +152,7 @@ onMounted(() => {
       </div>
     </template>
     <div class="md:min-h-[148px] md:max-h-[284px] max-md:h-full py-3 overflow-y-hidden">
-      <div v-if="searchResult.length === 0" class="h-[124px] flex justify-center items-center text-xs text-[#71717a]">
+      <div v-if="!searchResult.length" class="h-[124px] flex justify-center items-center text-xs text-[#71717a]">
         暂无搜索结果
       </div>
       <el-scrollbar v-else :max-height="isMobile ? '' : '260px'">
@@ -159,7 +169,12 @@ onMounted(() => {
             <el-icon :size="16">
               <component :is="item.icon"></component>
             </el-icon>
-            <span class="flex-1 text-base">{{ item.menuName }}</span>
+            <div class="flex-1 flex gap-x-1 text-base">
+              <template v-for="(name, _index) in item.fullName" :key="name">
+                <span v-if="_index === item.fullName.length - 1" v-html="highlightName(name, index)"></span>
+                <span v-else>{{ name }}</span>
+              </template>
+            </div>
             <i-mdi-arrow-left-bottom class="size-4" />
           </li>
         </ul>

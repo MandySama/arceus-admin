@@ -115,7 +115,7 @@ export default [
     method: 'POST',
     response: ({ body }) => {
       const { code } = body
-      if (code === '') {
+      if (!code) {
         return {
           code: 0,
           data: null,
