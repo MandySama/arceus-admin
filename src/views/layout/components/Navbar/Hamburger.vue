@@ -28,8 +28,8 @@ const toggleSidebar = () => {
   cursor: pointer;
 
   &:hover {
-    color: #18181b;
     background-color: #f4f4f5;
+    color: #18181b;
   }
 
   svg {

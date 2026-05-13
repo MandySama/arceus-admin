@@ -9,8 +9,7 @@ import router from './router'
 
 import persist from 'pinia-plugin-persistedstate'
 
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import * as AntDesignIconsVue from '@ant-design/icons-vue'
+import { Icon } from '@iconify/vue'
 
 import { removeAppLoading } from './plugins/inject-app-loading/remove-app-loading'
 
@@ -19,13 +18,7 @@ const app = createApp(App)
 app.use(createPinia().use(persist))
 app.use(router)
 
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(`Ep${key}`, component)
-}
-
-for (const [key, component] of Object.entries(AntDesignIconsVue)) {
-  app.component(`Ad${key}`, component)
-}
+app.component('icon', Icon)
 
 app.mount('#app')
 

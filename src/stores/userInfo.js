@@ -4,7 +4,7 @@ const indexRoute = {
   menuId: 0,
   menuName: '首页',
   menuType: 'menu',
-  icon: 'ad-HomeOutlined',
+  icon: 'ant-design:home-outlined',
   routePath: '/index',
   children: null,
 }

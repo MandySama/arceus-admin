@@ -122,12 +122,12 @@ onMounted(() => {
 
 <template>
   <div
-    class="toolbar-item md:mr-3 px-2 h-8 flex items-center gap-x-2 md:bg-[#f4f4f5] text-xs md:!text-[#71717a] md:hover:!text-[#323639] rounded-2xl cursor-pointer"
+    class="toolbar-item sm:mr-3 px-2 h-8 flex items-center gap-x-2 sm:bg-[#f4f4f5] text-xs sm:!text-[#71717a] sm:hover:!text-[#323639] rounded-2xl cursor-pointer"
     @click="open = true"
   >
     <i-lucide-search class="size-4" />
-    <span class="max-md:hidden md:block">搜索</span>
-    <div class="px-1.5 py-1 max-md:hidden md:flex bg-white rounded-l-sm rounded-r-xl">
+    <span class="sm:block max-sm:hidden">搜索</span>
+    <div class="px-1.5 py-1 sm:flex max-sm:hidden bg-white rounded-l-sm rounded-r-xl">
       <kbd class="leading-none">Ctrl K</kbd>
     </div>
   </div>
@@ -141,7 +141,7 @@ onMounted(() => {
     destroy-on-close
   >
     <template #header>
-      <div class="px-4 py-2 flex items-center border-b-1 border-b-solid border-b-[#e4e4e7]">
+      <div class="h-12 px-4 py-2 flex items-center border-b-1 border-b-solid border-b-[#e4e4e7]">
         <i-lucide-search class="size-4 mr-2 text-[#71717a]" />
         <input
           ref="searchRef"
@@ -151,7 +151,7 @@ onMounted(() => {
         />
       </div>
     </template>
-    <div class="md:min-h-[148px] md:max-h-[284px] max-md:h-full py-3 overflow-y-hidden">
+    <div class="sm:min-h-[148px] sm:max-h-[284px] max-sm:h-full py-3 overflow-y-hidden">
       <div v-if="!searchResult.length" class="h-[124px] flex justify-center items-center text-xs text-[#71717a]">
         暂无搜索结果
       </div>
@@ -166,9 +166,7 @@ onMounted(() => {
             @mouseenter="onMouseenter(index)"
             @click="handleEnter"
           >
-            <el-icon :size="16">
-              <component :is="item.icon"></component>
-            </el-icon>
+            <icon class="size-4" :icon="item.icon"></icon>
             <div class="flex-1 flex gap-x-1 text-base">
               <template v-for="(name, _index) in item.fullName" :key="name">
                 <span v-if="_index === item.fullName.length - 1" v-html="highlightName(name, index)"></span>
@@ -181,27 +179,27 @@ onMounted(() => {
       </el-scrollbar>
     </div>
     <template #footer>
-      <div class="px-4 py-2 flex items-center gap-x-4 border-t-1 border-t-solid border-t-[#e4e4e7]">
+      <div class="h-9 px-4 py-2 flex items-center gap-x-4 border-t-1 border-t-solid border-t-[#e4e4e7]">
         <div class="search-modal-footer-item">
-          <div class="search-modal-footer-icon">
+          <div class="search-modal-footer-item__icon">
             <i-mdi-arrow-left-bottom />
           </div>
-          <span class="search-modal-footer-title">选择</span>
+          <span class="search-modal-footer__title">选择</span>
         </div>
         <div class="search-modal-footer-item">
-          <div class="search-modal-footer-icon">
+          <div class="search-modal-footer-item__icon">
             <i-mdi-arrow-up />
           </div>
-          <div class="search-modal-footer-icon">
+          <div class="search-modal-footer-item__icon">
             <i-mdi-arrow-bottom />
           </div>
-          <span class="search-modal-footer-title">切换</span>
+          <span class="search-modal-footer__title">切换</span>
         </div>
         <div class="search-modal-footer-item">
-          <div class="search-modal-footer-icon">
+          <div class="search-modal-footer-item__icon">
             <i-mdi-keyboard-esc />
           </div>
-          <span class="search-modal-footer-title">关闭</span>
+          <span class="search-modal-footer__title">关闭</span>
         </div>
       </div>
     </template>
@@ -221,7 +219,7 @@ onMounted(() => {
   align-items: center;
   color: #323639;
 
-  .search-modal-footer-icon {
+  .search-modal-footer-item__icon {
     width: 20px;
     height: 20px;
     margin-right: 8px;
@@ -240,7 +238,7 @@ onMounted(() => {
     }
   }
 
-  .search-modal-footer-title {
+  .search-modal-footer__title {
     font-size: 12px;
     line-height: 20px;
   }

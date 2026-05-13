@@ -2,7 +2,7 @@
 import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Search from './Search.vue'
-import Setting from './Setting.vue'
+import Setting from '../Setting/index.vue'
 import Fullscreen from './Fullscreen.vue'
 </script>
 
@@ -12,7 +12,7 @@ import Fullscreen from './Fullscreen.vue'
     <breadcrumb></breadcrumb>
     <div class="ml-auto flex items-center gap-x-1">
       <search></search>
-      <setting class="toolbar-item"></setting>
+      <setting></setting>
       <fullscreen class="toolbar-item"></fullscreen>
     </div>
   </el-header>

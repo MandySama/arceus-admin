@@ -11,7 +11,7 @@ defineProps({
   <el-sub-menu v-if="item.children?.length > 0" :index="item.routePath">
     <template #title>
       <el-icon :size="14">
-        <component :is="item.icon"></component>
+        <icon :icon="item.icon"></icon>
       </el-icon>
       <span>{{ item.menuName }}</span>
     </template>
@@ -20,7 +20,7 @@ defineProps({
   <router-link v-else :to="item.routePath">
     <el-menu-item :index="item.routePath">
       <el-icon :size="14">
-        <component :is="item.icon"></component>
+        <icon :icon="item.icon"></icon>
       </el-icon>
       <template #title>
         <span>{{ item.menuName }}</span>
