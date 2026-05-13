@@ -74,7 +74,7 @@ const onMouseenter = (index) => {
 const highlightName = (name, index) => {
   return name.replace(
     keyword.value,
-    `<mark class="bg-transparent ${activeIndex.value === index ? 'text-white underline underline-offset-4' : 'text-(--el-color-primary)'}">${keyword.value}</mark>`
+    `<mark class="bg-transparent ${activeIndex.value === index ? 'text-white border-b-2 border-b-solid border-b-white' : 'text-(--el-color-primary)'}">${keyword.value}</mark>`
   )
 }
 

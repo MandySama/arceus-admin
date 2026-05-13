@@ -121,7 +121,14 @@ onMounted(() => {
         <el-checkbox class="!h-5 !mr-54" v-model="rememberMe">记住我</el-checkbox>
       </el-form-item>
       <el-form-item class="w-70">
-        <el-button :loading="loading" loading-icon="ad-LoadingOutlined" @click="handleLogin">登 录</el-button>
+        <el-button :loading="true" @click="handleLogin">
+          <template #loading>
+            <el-icon class="is-loading">
+              <icon class="animate-spin" icon="ant-design:loading-outlined"></icon>
+            </el-icon>
+          </template>
+          登 录
+        </el-button>
         <div v-if="registerEnabled" class="w-full leading-5 text-right mt-4.5">
           <router-link to="/register">注册</router-link>
         </div>
