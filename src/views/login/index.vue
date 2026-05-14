@@ -121,7 +121,7 @@ onMounted(() => {
         <el-checkbox class="!h-5 !mr-54" v-model="rememberMe">记住我</el-checkbox>
       </el-form-item>
       <el-form-item class="w-70">
-        <el-button :loading="true" @click="handleLogin">
+        <el-button :loading="loading" @click="handleLogin">
           <template #loading>
             <el-icon class="is-loading">
               <icon class="animate-spin" icon="ant-design:loading-outlined"></icon>

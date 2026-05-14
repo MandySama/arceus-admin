@@ -6,6 +6,10 @@ html {
   box-sizing: border-box;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 * {
   box-sizing: inherit;
 }

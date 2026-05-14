@@ -9,7 +9,7 @@ const indexRoute = {
   children: null,
 }
 
-const viewModules = import.meta.glob('@/views/**/*.vue')
+const viewModules = import.meta.glob(['@/views/**/*.vue', '!@/views/layout/**/*.vue'])
 
 export const useUserInfoStore = defineStore('userInfo', () => {
   const routeList = ref([])

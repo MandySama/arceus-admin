@@ -1,11 +1,15 @@
 <script setup>
 import { useResize } from '@/hooks/resize'
+import { useSettingStore } from '@/stores/setting'
 
 import ThemeMode from './ThemeMode.vue'
 
 const open = ref(false)
 
 const { isMobile } = useResize()
+
+const settingStore = useSettingStore()
+const { themeMode } = storeToRefs(settingStore)
 </script>
 
 <template>
@@ -16,7 +20,7 @@ const { isMobile } = useResize()
   <el-drawer v-model="open" :size="isMobile ? '100%' : '360px'" title="布局配置">
     <div class="setting-drawer-group">
       <div class="setting-drawer-group__title">主题模式</div>
-      <theme-mode></theme-mode>
+      <theme-mode v-model="themeMode"></theme-mode>
     </div>
     <template #footer>
       <div class="w-full flex gap-x-4">
