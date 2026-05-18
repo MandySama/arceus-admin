@@ -19,5 +19,18 @@ html.dark {
 :root,
 html.dark {
   --sidebar: var(--background);
-  --el-menu-bg-color: var(--sidebar);
+  --navbar: var(--background);
+
+  .el-menu {
+    --el-menu-bg-color: var(--sidebar);
+  }
+
+  .el-dialog {
+    --el-dialog-bg-color: var(--background);
+  }
+
+  .el-drawer {
+    --el-drawer-bg-color: var(--background);
+  }
 }
+

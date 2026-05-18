@@ -24,6 +24,7 @@ import Fullscreen from './Fullscreen.vue'
   padding: 0 8px;
   display: flex;
   align-items: center;
+  background-color: var(--navbar);
   border-bottom: 1px solid var(--border);
 
   .toolbar-item,
