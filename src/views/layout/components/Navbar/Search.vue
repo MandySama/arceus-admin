@@ -122,12 +122,12 @@ onMounted(() => {
 
 <template>
   <div
-    class="toolbar-item sm:mr-3 px-2 h-8 flex items-center gap-x-2 sm:bg-[#f4f4f5] text-xs sm:!text-[#71717a] sm:hover:!text-[#323639] rounded-2xl cursor-pointer"
+    class="toolbar-item sm:mr-3 px-2 h-8 flex items-center gap-x-2 sm:bg-(--accent) text-xs sm:!text-(--muted-foreground) sm:hover:!text-(--foreground) rounded-2xl cursor-pointer"
     @click="open = true"
   >
     <i-lucide-search class="size-4" />
     <span class="sm:block max-sm:hidden">搜索</span>
-    <div class="px-1.5 py-1 sm:flex max-sm:hidden bg-white rounded-l-sm rounded-r-xl">
+    <div class="px-1.5 py-1 sm:flex max-sm:hidden bg-(--background) rounded-l-sm rounded-r-xl">
       <kbd class="leading-none">Ctrl K</kbd>
     </div>
   </div>
@@ -141,18 +141,21 @@ onMounted(() => {
     destroy-on-close
   >
     <template #header>
-      <div class="h-12 px-4 py-2 flex items-center border-b-1 border-b-solid border-b-[#e4e4e7]">
-        <i-lucide-search class="size-4 mr-2 text-[#71717a]" />
+      <div class="h-12 px-4 py-2 flex items-center border-b-1 border-b-solid border-b-(--border)">
+        <i-lucide-search class="size-4 mr-2 text-(--muted-foreground)" />
         <input
           ref="searchRef"
-          class="w-4/5 p-1.5 pl-0 text-sm placeholder:text-[#71717a] text-[#323639] outline-none"
+          class="w-4/5 p-1.5 pl-0 text-sm placeholder:text-(--muted-foreground) text-(--foreground) outline-none"
           v-model="keyword"
           placeholder="搜索菜单"
         />
       </div>
     </template>
     <div class="sm:min-h-[148px] sm:max-h-[284px] max-sm:h-full py-3 overflow-y-hidden">
-      <div v-if="!searchResult.length" class="h-[124px] flex justify-center items-center text-xs text-[#71717a]">
+      <div
+        v-if="!searchResult.length"
+        class="h-[124px] flex justify-center items-center text-xs text-(--muted-foreground)"
+      >
         暂无搜索结果
       </div>
       <el-scrollbar v-else :max-height="isMobile ? '' : '260px'">
@@ -160,7 +163,7 @@ onMounted(() => {
           <li
             v-for="(item, index) in searchResult"
             :key="item.routePath"
-            class="px-4 py-4 flex items-center gap-x-2 bg-[#f4f4f5] text-[#323639] rounded-lg cursor-pointer"
+            class="px-4 py-4 flex items-center gap-x-2 bg-(--accent) text-(--foreground) rounded-lg cursor-pointer"
             :class="index === activeIndex && ['!bg-(--el-color-primary)', 'text-white']"
             :data-search-result-item="index"
             @mouseenter="onMouseenter(index)"
@@ -179,7 +182,7 @@ onMounted(() => {
       </el-scrollbar>
     </div>
     <template #footer>
-      <div class="h-9 px-4 py-2 flex items-center gap-x-4 border-t-1 border-t-solid border-t-[#e4e4e7]">
+      <div class="h-9 px-4 py-2 flex items-center gap-x-4 border-t-1 border-t-solid border-t-(--border)">
         <div class="search-modal-footer-item">
           <div class="search-modal-footer-item__icon">
             <i-mdi-arrow-left-bottom />
@@ -217,7 +220,7 @@ onMounted(() => {
 .search-modal-footer-item {
   display: flex;
   align-items: center;
-  color: #323639;
+  color: var(--foreground);
 
   .search-modal-footer-item__icon {
     width: 20px;

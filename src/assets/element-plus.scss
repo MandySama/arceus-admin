@@ -11,16 +11,16 @@
   border-radius: 12px;
 
   &:hover {
-    background-color: #f4f4f5;
+    background-color: var(--accent);
 
     .el-icon {
-      color: #18181b;
+      color: var(--accent-foreground);
     }
   }
 
   &:focus .el-icon,
   .el-icon {
-    color: #323639cc;
+    color: var(--foreground);
   }
 }
 
@@ -110,12 +110,12 @@
     padding: 8px 16px;
     margin-bottom: 0;
     height: 48px;
-    border-bottom: 1px solid #e4e4e7;
+    border-bottom: 1px solid var(--border);
 
     .el-drawer__title {
       font-size: 14px;
       line-height: 20px;
-      color: #323639;
+      color: var(--foreground);
       font-weight: 500;
     }
 
@@ -131,6 +131,6 @@
   .el-drawer__footer {
     padding: 8px 16px;
     height: 48px;
-    border-top: 1px solid #e4e4e7;
+    border-top: 1px solid var(--border);
   }
 }

@@ -24,13 +24,13 @@ const themeModeList = [
   <div class="grid grid-cols-3 gap-x-4">
     <div v-for="item in themeModeList" :key="item.value" class="flex flex-col items-center gap-y-2">
       <div
-        class="w-full h-14 flex justify-center items-center outline outline-solid outline-[#e4e4e7] hover:outline-2 hover:outline-(--el-color-primary) rounded-md cursor-pointer"
+        class="w-full h-14 flex justify-center items-center outline outline-solid outline-(--border) hover:outline-2 hover:outline-(--el-color-primary) rounded-md cursor-pointer"
         :class="item.value === themeMode && 'outline-2 !outline-(--el-color-primary)'"
         @click="themeMode = item.value"
       >
-        <icon class="size-5 text-[#323639]" :icon="item.icon"></icon>
+        <icon class="size-5 text-(--foreground)" :icon="item.icon"></icon>
       </div>
-      <div class="text-xs text-[#71717a]">{{ item.label }}</div>
+      <div class="text-xs text-(--muted-foreground)">{{ item.label }}</div>
     </div>
   </div>
 </template>

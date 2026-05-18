@@ -24,7 +24,7 @@ import Fullscreen from './Fullscreen.vue'
   padding: 0 8px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e4e4e7;
+  border-bottom: 1px solid var(--border);
 
   .toolbar-item,
   :deep(.toolbar-item) {
@@ -32,12 +32,12 @@ import Fullscreen from './Fullscreen.vue'
     padding-inline: 8px;
     display: flex;
     align-items: center;
-    color: #323639;
+    color: var(--foreground);
     border-radius: 16px;
     cursor: pointer;
 
     &:hover {
-      background-color: #f4f4f5;
+      background-color: var(--accent);
     }
   }
 

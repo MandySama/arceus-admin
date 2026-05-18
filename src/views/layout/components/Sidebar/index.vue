@@ -42,8 +42,8 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
   width: 200px;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-right: 1px solid #e4e4e7;
+  background-color: var(--sidebar);
+  border-right: 1px solid var(--border);
 
   &.collapse-sidebar {
     width: 64px;

@@ -23,13 +23,13 @@ const toggleSidebar = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #323639cc;
+  color: var(--foreground);
   border-radius: 6px;
   cursor: pointer;
 
   &:hover {
-    background-color: #f4f4f5;
-    color: #18181b;
+    background-color: var(--accent);
+    color: var(--accent-foreground);
   }
 
   svg {

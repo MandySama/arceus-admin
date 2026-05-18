@@ -1,0 +1,23 @@
+:root {
+  --background: #fff;
+  --foreground: #323639;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --border: #e4e4e7;
+}
+
+html.dark {
+  --background: #1c1e23;
+  --foreground: #f2f2f2;
+  --muted-foreground: #a1a1aa;
+  --accent: #2e3033;
+  --accent-foreground: #fafafa;
+  --border: #36363a;
+}
+
+:root,
+html.dark {
+  --sidebar: var(--background);
+  --el-menu-bg-color: var(--sidebar);
+}

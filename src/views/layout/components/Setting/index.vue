@@ -45,7 +45,7 @@ const { themeMode } = storeToRefs(settingStore)
   .setting-drawer-group__title {
     font-size: 14px;
     line-height: 20px;
-    color: #323639;
+    color: var(--foreground);
     font-weight: 500;
   }
 }
