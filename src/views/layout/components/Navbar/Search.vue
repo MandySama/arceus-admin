@@ -164,7 +164,7 @@ onMounted(() => {
             v-for="(item, index) in searchResult"
             :key="item.routePath"
             class="px-4 py-4 flex items-center gap-x-2 bg-(--accent) text-(--foreground) rounded-lg cursor-pointer"
-            :class="index === activeIndex && ['!bg-(--el-color-primary)', 'text-white']"
+            :class="index === activeIndex && '!bg-(--el-color-primary) text-white'"
             :data-search-result-item="index"
             @mouseenter="onMouseenter(index)"
             @click="handleEnter"

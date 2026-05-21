@@ -3,13 +3,14 @@ import { useResize } from '@/hooks/resize'
 import { useSettingStore } from '@/stores/setting'
 
 import ThemeMode from './ThemeMode.vue'
+import ThemeColor from './ThemeColor.vue'
 
 const open = ref(false)
 
 const { isMobile } = useResize()
 
 const settingStore = useSettingStore()
-const { themeMode } = storeToRefs(settingStore)
+const { themeMode, themeColor } = storeToRefs(settingStore)
 </script>
 
 <template>
@@ -17,10 +18,17 @@ const { themeMode } = storeToRefs(settingStore)
     <i-lucide-settings />
   </div>
 
-  <el-drawer v-model="open" :size="isMobile ? '100%' : '360px'" title="布局配置">
-    <div class="setting-drawer-group">
+  <el-drawer v-model="open" :size="isMobile ? '100%' : '360px'" title="偏好设置">
+    <div class="setting-drawer-group !pt-0">
       <div class="setting-drawer-group__title">主题模式</div>
       <theme-mode v-model="themeMode"></theme-mode>
+    </div>
+    <div class="setting-drawer-group">
+      <div class="setting-drawer-group__title">主题色</div>
+      <theme-color v-model="themeColor"></theme-color>
+    </div>
+    <div class="setting-drawer-group">
+      <div class="setting-drawer-group__title">其他</div>
     </div>
     <template #footer>
       <div class="w-full flex gap-x-4">
@@ -28,7 +36,7 @@ const { themeMode } = storeToRefs(settingStore)
           <template #icon>
             <icon icon="ep:copy-document"></icon>
           </template>
-          复制布局配置
+          复制偏好设置
         </el-button>
         <el-button class="w-full !ml-0 !text-xs" type="info" text>清空缓存 & 刷新页面</el-button>
       </div>
@@ -38,6 +46,7 @@ const { themeMode } = storeToRefs(settingStore)
 
 <style scoped lang="scss">
 .setting-drawer-group {
+  padding-block: 12px;
   display: flex;
   flex-direction: column;
   row-gap: 12px;

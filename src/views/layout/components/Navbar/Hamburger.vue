@@ -11,8 +11,7 @@ const toggleSidebar = () => {
 
 <template>
   <div class="hamburger-container" @click="toggleSidebar">
-    <i-ant-design-menu-unfold-outlined v-if="collapseSidebar" />
-    <i-ant-design-menu-fold-outlined v-else />
+    <icon :icon="collapseSidebar ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'" />
   </div>
 </template>
 
