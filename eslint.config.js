@@ -4,6 +4,7 @@ import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from 'eslint-config-prettier/flat'
+import pluginPrettier from 'eslint-plugin-prettier'
 
 export default defineConfig([
   {
@@ -27,4 +28,14 @@ export default defineConfig([
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
   skipFormatting,
+
+  {
+    plugins: {
+      prettier: pluginPrettier,
+    },
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'prettier/prettier': 'warn',
+    },
+  },
 ])
