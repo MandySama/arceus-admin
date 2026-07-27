@@ -18,6 +18,7 @@
     overflow: hidden;
   }
   .app-loading.hidden-loading {
+    pointer-events: none;
     opacity: 0;
     transition: opacity 0.8s ease-out;
   }
@@ -44,10 +45,11 @@
     animation: rotating calc(5s / (9 - var(--n) + 1)) linear infinite;
   }
   .app-loading__text {
-    margin-top: 12px;
+    font-family: "Microsoft YaHei UI", serif;
     color: #fff;
     font-size: 18px;
     line-height: 1.5;
+    margin-top: 12px;
   }
   @keyframes change-color {
     0%,

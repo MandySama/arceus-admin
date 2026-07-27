@@ -1,0 +1,11 @@
+{
+  "appId": "top.totodile.arceus",
+  "appName": "Arceus Admin",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
