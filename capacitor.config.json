@@ -3,9 +3,7 @@
   "appName": "Arceus Admin",
   "webDir": "dist",
   "server": {
+    "androidScheme": "http",
     "cleartext": true
-  },
-  "android": {
-    "allowMixedContent": true
   }
 }

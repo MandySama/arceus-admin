@@ -1,5 +1,15 @@
-<script setup></script>
+<script setup>
+import { Sidebar } from './components'
+</script>
 
-<template></template>
+<template>
+  <el-container class="app-layout">
+    <sidebar></sidebar>
+  </el-container>
+</template>
 
-<style scoped></style>
+<style scoped>
+.app-layout {
+  height: 100vh;
+}
+</style>

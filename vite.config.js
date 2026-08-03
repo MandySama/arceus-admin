@@ -10,6 +10,7 @@ import { injectAppLoadingPlugin } from './src/plugins'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import tailwindcss from '@tailwindcss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -40,6 +41,22 @@ export default defineConfig(({ mode }) => {
         autoInstall: true,
       }),
       tailwindcss(),
+      VitePWA({
+        registerType: 'autoUpdate',
+        // devOptions: {
+        //   enabled: true,
+        // },
+        manifest: {
+          name: env.VITE_APP_TITLE,
+          theme_color: '#fff',
+          icons: [
+            {
+              src: 'pwa-192x192.png',
+              sizes: '192x192',
+            },
+          ],
+        },
+      }),
     ],
     resolve: {
       alias: {
