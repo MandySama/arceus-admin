@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+import { useUserInfoStore } from '@/stores'
+import request from '@/utils/request'
+
 NProgress.configure({ showSpinner: false })
 
 const router = createRouter({
@@ -26,12 +29,18 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach(async (to) => {
   NProgress.start()
   if (localStorage.getItem('token')) {
     if (to.path === '/login') {
       return '/home'
     } else {
+      const userInfoStore = useUserInfoStore()
+      if (!userInfoStore.routeList.length) {
+        const data = await request.get('/userInfo')
+        userInfoStore.setUserInfo(data)
+        return { ...to, replace: true }
+      }
       return true
     }
   } else {

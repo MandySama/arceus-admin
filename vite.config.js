@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       vue(),
       // vueDevTools(),
       AutoImport({
-        imports: ['vue', 'vue-router'],
+        imports: ['vue', 'vue-router', 'pinia'],
         resolvers: [ElementPlusResolver()],
         eslintrc: {
           enabled: true,
@@ -43,9 +43,10 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        // devOptions: {
-        //   enabled: true,
-        // },
+        devOptions: {
+          // enabled: true,
+          navigateFallbackAllowlist: [/^\/.*$/],
+        },
         manifest: {
           name: env.VITE_APP_TITLE,
           theme_color: '#fff',

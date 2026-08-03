@@ -66,7 +66,7 @@ const handleLogin = () => {
         .post('/login', { ...loginForm })
         .then((data) => {
           localStorage.setItem('token', data)
-          router.push(route.query.redirect || '/home')
+          router.replace(route.query.redirect || '/home')
         })
         .catch(() => {
           loading.value = false
