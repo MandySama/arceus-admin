@@ -15,7 +15,7 @@ const captchaList = [
 
 export default defineHandler(() => {
   return {
-    code: 0,
+    code: 200,
     data: {
       uuid: '2a609501fbd9435b9a28cc1c0bea3b3a',
       captcha: captchaList[Math.floor(Math.random() * captchaList.length)],
