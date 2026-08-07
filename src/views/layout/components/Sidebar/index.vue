@@ -1,17 +1,23 @@
 <script setup>
-import { useLayoutStore } from '@/stores'
+import { useLayoutStore, useUserInfoStore } from '@/stores'
 
-import Logo from './Logo.vue'
+import Logo from '../Logo.vue'
+import MenuItem from '../MenuItem.vue'
 
 const layoutStore = useLayoutStore()
 const { collapseSidebar } = storeToRefs(layoutStore)
+
+const userInfoStore = useUserInfoStore()
+const { routeList: menuList } = storeToRefs(userInfoStore)
 </script>
 
 <template>
   <el-aside class="app-layout__sidebar" :class="{ 'collapse-sidebar': collapseSidebar }">
     <logo :is-collapse="collapseSidebar"></logo>
     <el-scrollbar>
-      <el-menu></el-menu>
+      <el-menu>
+        <menu-item v-for="item in menuList" :key="item.routePath" :item="item"></menu-item>
+      </el-menu>
     </el-scrollbar>
   </el-aside>
 </template>

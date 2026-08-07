@@ -1,10 +1,13 @@
 <script setup>
-import { Sidebar } from './components'
+import { Sidebar, Navbar } from './components'
 </script>
 
 <template>
   <el-container class="app-layout">
     <sidebar></sidebar>
+    <el-container direction="vertical">
+      <navbar></navbar>
+    </el-container>
   </el-container>
 </template>
 
