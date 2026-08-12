@@ -13,10 +13,10 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
 <template>
   <el-aside class="app-layout__sidebar" :class="{ 'collapse-sidebar': collapseSidebar }">
-    <logo :is-collapse="collapseSidebar"></logo>
+    <logo :is-collapse="collapseSidebar" @click="collapseSidebar = !collapseSidebar"></logo>
     <el-scrollbar>
-      <el-menu>
-        <menu-item v-for="item in menuList" :key="item.routePath" :item="item"></menu-item>
+      <el-menu :collapse="collapseSidebar" :collapse-transition="false">
+        <menu-item v-for="item in menuList" :key="item.menuId" :item="item"></menu-item>
       </el-menu>
     </el-scrollbar>
   </el-aside>

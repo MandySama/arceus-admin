@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <el-menu-item v-if="item.menuType === 'menu'" :index="item.routePath">
+  <el-menu-item v-if="item.menuType === 'menu'" :index="item.menuId">
     <el-icon>
       <icon :icon="item.icon"></icon>
     </el-icon>
@@ -16,7 +16,7 @@ defineProps({
       <span>{{ item.menuName }}</span>
     </template>
   </el-menu-item>
-  <el-sub-menu v-else-if="item.menuType === 'dir'" :index="item.routePath">
+  <el-sub-menu v-else-if="item.menuType === 'dir'" :index="item.menuId">
     <template #title>
       <el-icon>
         <icon :icon="item.icon"></icon>
@@ -25,7 +25,7 @@ defineProps({
     </template>
     <menu-item
       v-for="childItem in item.children"
-      :key="childItem.routePath"
+      :key="childItem.menuId"
       :item="childItem"
     ></menu-item>
   </el-sub-menu>
