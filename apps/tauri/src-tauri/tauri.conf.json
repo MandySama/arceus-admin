@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "top.totodile.arceus",
   "build": {
-    "frontendDist": "../dist",
+    "frontendDist": "../../web/dist",
     "devUrl": "http://localhost:5173",
-    "beforeDevCommand": "pnpm --silent dev",
-    "beforeBuildCommand": "pnpm --silent build"
+    "beforeDevCommand": "pnpm -s -F @arceus/web dev",
+    "beforeBuildCommand": "pnpm -s -F @arceus/web build"
   },
   "app": {
     "windows": [

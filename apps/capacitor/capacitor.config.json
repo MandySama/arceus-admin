@@ -1,7 +1,7 @@
 {
   "appId": "top.totodile.arceus",
   "appName": "Arceus Admin",
-  "webDir": "dist",
+  "webDir": "../web/dist",
   "server": {
     "androidScheme": "http",
     "cleartext": true
