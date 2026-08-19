@@ -4,7 +4,7 @@ import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from 'eslint-config-prettier/flat'
-import autoImport from './.eslintrc-auto-import.js'
+import autoImport from './apps/web/.eslintrc-auto-import.js'
 import pluginPrettier from 'eslint-plugin-prettier'
 
 export default defineConfig([
@@ -13,7 +13,16 @@ export default defineConfig([
     files: ['**/*.{vue,js,mjs,jsx}'],
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  globalIgnores([
+    '**/dist/**',
+    '**/dist-ssr/**',
+    '**/dev-dist/**',
+    '**/coverage/**',
+    '**/.output/**',
+    '**/target/**',
+    '**/android/**',
+    '**/.eslintrc-auto-import.js',
+  ]),
 
   {
     languageOptions: {

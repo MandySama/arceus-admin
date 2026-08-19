@@ -1,0 +1,44 @@
+{
+  "name": "@arceus/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "run-p -s dev:vite dev:mock",
+    "dev:vite": "vite",
+    "dev:mock": "nitro dev",
+    "build": "run-p -s build:vite build:mock",
+    "build:vite": "vite build",
+    "build:mock": "nitro build",
+    "mock:start": "node .output/server/index.mjs",
+    "preview": "vite preview",
+    "icon": "pwa-assets-generator --preset minimal-2023 public/favicon.svg"
+  },
+  "dependencies": {
+    "@iconify/vue": "^5.0.1",
+    "axios": "^1.18.1",
+    "element-plus": "^2.14.2",
+    "h3": "2.0.1-rc.26",
+    "nprogress": "^0.2.0",
+    "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@iconify-json/ant-design": "^1.2.8",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vite-pwa/assets-generator": "^1.0.2",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "nitro": "3.0.260610-beta",
+    "npm-run-all2": "^9.0.2",
+    "sass": "^1.101.0",
+    "tailwindcss": "^4.3.2",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-icons": "^23.0.1",
+    "unplugin-vue-components": "^32.1.0",
+    "vite": "^8.0.16",
+    "vite-plugin-pwa": "^1.3.0",
+    "vite-plugin-vue-devtools": "^8.1.2"
+  }
+}

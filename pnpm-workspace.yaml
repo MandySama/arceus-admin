@@ -1,6 +1,11 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
 allowBuilds:
   '@parcel/watcher': true
-  sharp: true
+  'sharp': true
 
 overrides:
   'sharp-ico@0.1.5>sharp': '0.33.5'
+  'element-plus@2.14.2>@vueuse/core': '14.4.0'
