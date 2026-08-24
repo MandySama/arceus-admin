@@ -31,7 +31,7 @@
     "@vite-pwa/assets-generator": "^1.0.2",
     "@vitejs/plugin-vue": "^6.0.7",
     "nitro": "3.0.260610-beta",
-    "npm-run-all2": "^9.0.2",
+    "npm-run-all2": "catalog:",
     "sass": "^1.101.0",
     "tailwindcss": "^4.3.2",
     "unplugin-auto-import": "^21.0.0",
