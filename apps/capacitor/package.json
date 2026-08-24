@@ -16,6 +16,6 @@
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^8.4.2",
-    "npm-run-all2": "^9.0.2"
+    "npm-run-all2": "catalog:"
   }
 }

@@ -16,11 +16,11 @@ export default defineConfig([
   globalIgnores([
     '**/dist/**',
     '**/dist-ssr/**',
-    '**/dev-dist/**',
     '**/coverage/**',
     '**/.output/**',
-    '**/target/**',
+    '**/src-tauri/**',
     '**/android/**',
+    '**/dev-dist/**',
     '**/.eslintrc-auto-import.js',
   ]),
 
