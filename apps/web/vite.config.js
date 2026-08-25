@@ -49,6 +49,7 @@ export default defineConfig(({ mode }) => {
         },
         manifest: {
           name: env.VITE_APP_TITLE,
+          short_name: env.VITE_APP_TITLE,
           theme_color: '#fff',
           icons: [
             {
@@ -56,6 +57,9 @@ export default defineConfig(({ mode }) => {
               sizes: '192x192',
             },
           ],
+        },
+        workbox: {
+          navigateFallbackDenylist: [/^\/api/],
         },
       }),
     ],
