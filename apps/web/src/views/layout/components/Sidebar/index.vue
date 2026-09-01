@@ -7,6 +7,11 @@ import MenuItem from '../MenuItem.vue'
 const layoutStore = useLayoutStore()
 const { collapseSidebar } = storeToRefs(layoutStore)
 
+const route = useRoute()
+const activeMenu = computed(() => {
+  return route.path
+})
+
 const userInfoStore = useUserInfoStore()
 const { routeList: menuList } = storeToRefs(userInfoStore)
 </script>
@@ -15,7 +20,12 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
   <el-aside class="app-layout__sidebar" :class="{ 'collapse-sidebar': collapseSidebar }">
     <logo :is-collapse="collapseSidebar" @click="collapseSidebar = !collapseSidebar"></logo>
     <el-scrollbar>
-      <el-menu :collapse="collapseSidebar" :collapse-transition="false">
+      <el-menu
+        :collapse="collapseSidebar"
+        :default-active="activeMenu"
+        unique-opened
+        :collapse-transition="false"
+      >
         <menu-item v-for="item in menuList" :key="item.menuId" :item="item"></menu-item>
       </el-menu>
     </el-scrollbar>

@@ -5,10 +5,20 @@ defineProps({
     required: true,
   },
 })
+
+const router = useRouter()
+
+const handleMenuClick = (item) => {
+  router.push(item.routePath)
+}
 </script>
 
 <template>
-  <el-menu-item v-if="item.menuType === 'menu'" :index="item.menuId">
+  <el-menu-item
+    v-if="item.menuType === 'menu'"
+    :index="item.routePath"
+    @click="handleMenuClick(item)"
+  >
     <el-icon>
       <icon :icon="item.icon"></icon>
     </el-icon>
@@ -16,7 +26,7 @@ defineProps({
       <span>{{ item.menuName }}</span>
     </template>
   </el-menu-item>
-  <el-sub-menu v-else-if="item.menuType === 'dir'" :index="item.menuId">
+  <el-sub-menu v-else :index="item.routePath">
     <template #title>
       <el-icon>
         <icon :icon="item.icon"></icon>
