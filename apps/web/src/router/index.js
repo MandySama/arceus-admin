@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Layout from '@/views/layout/index.vue'
+
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -13,7 +15,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/views/layout/index.vue'),
+      component: Layout,
       children: [
         {
           path: '/home',
