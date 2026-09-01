@@ -7,6 +7,6 @@
 <style scoped>
 .app-layout__navbar {
   height: 48px;
-  border-bottom: 1px solid #e4e4e7;
+  border-bottom: 1px solid var(--border);
 }
 </style>

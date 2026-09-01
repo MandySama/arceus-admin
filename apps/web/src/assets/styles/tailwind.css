@@ -1,1 +1,7 @@
 @import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+}
