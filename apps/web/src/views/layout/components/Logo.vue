@@ -15,7 +15,7 @@ const title = import.meta.env.VITE_APP_TITLE
   <div class="app-layout__sidebar-logo">
     <router-link class="flex size-full items-center justify-center" to="/home">
       <img v-if="isCollapse" class="size-8" :src="LogoSvg" />
-      <div v-else class="text-xl font-bold text-(--el-color-primary)">{{ title }}</div>
+      <div v-else class="text-primary text-xl font-bold">{{ title }}</div>
     </router-link>
   </div>
 </template>

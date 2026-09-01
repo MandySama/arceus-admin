@@ -35,7 +35,8 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 <style scoped>
 .app-layout__sidebar {
   width: 224px;
-  border-right: 1px solid #e4e4e7;
+  background-color: var(--background);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
 
