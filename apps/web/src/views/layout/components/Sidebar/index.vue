@@ -8,9 +8,6 @@ const layoutStore = useLayoutStore()
 const { collapseSidebar } = storeToRefs(layoutStore)
 
 const showLogoBorder = ref(false)
-const handleMenuScroll = ({ scrollTop }) => {
-  showLogoBorder.value = scrollTop > 0
-}
 
 const route = useRoute()
 const activeMenu = computed(() => {
@@ -19,6 +16,10 @@ const activeMenu = computed(() => {
 
 const userInfoStore = useUserInfoStore()
 const { routeList: menuList } = storeToRefs(userInfoStore)
+
+const handleMenuScroll = ({ scrollTop }) => {
+  showLogoBorder.value = scrollTop > 0
+}
 </script>
 
 <template>
