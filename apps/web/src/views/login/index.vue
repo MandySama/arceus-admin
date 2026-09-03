@@ -18,7 +18,7 @@ const loginRules = {
 
 const title = import.meta.env.VITE_APP_TITLE
 
-const captchaEnabled = ref(true)
+const enabledCaptcha = ref(true)
 
 const captcha = ref('')
 
@@ -26,7 +26,7 @@ const rememberMe = ref(false)
 
 const loading = ref(false)
 
-const registerEnabled = ref(false)
+const enabledRegister = ref(false)
 
 const router = useRouter()
 
@@ -42,7 +42,7 @@ const getRememberData = () => {
 }
 
 const getCaptcha = async () => {
-  if (captchaEnabled.value) {
+  if (enabledCaptcha.value) {
     const data = await request.get('/captcha')
     loginForm.uuid = data.uuid
     captcha.value = data.captcha
@@ -105,7 +105,7 @@ onMounted(() => {
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item v-if="captchaEnabled" prop="code">
+      <el-form-item v-if="enabledCaptcha" prop="code">
         <el-input class="w-[150px]!" v-model="loginForm.code" placeholder="验证码">
           <template #prefix>
             <el-icon>
@@ -135,7 +135,7 @@ onMounted(() => {
           </template>
           登录
         </el-button>
-        <div v-if="registerEnabled" class="mt-[18px] w-70 text-right leading-5">
+        <div v-if="enabledRegister" class="mt-[18px] w-70 text-right leading-5">
           <router-link to="/register">注册</router-link>
         </div>
       </el-form-item>

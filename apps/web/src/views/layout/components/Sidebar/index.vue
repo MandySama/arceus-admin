@@ -7,6 +7,11 @@ import MenuItem from '../MenuItem.vue'
 const layoutStore = useLayoutStore()
 const { collapseSidebar } = storeToRefs(layoutStore)
 
+const showLogoBorder = ref(false)
+const handleMenuScroll = ({ scrollTop }) => {
+  showLogoBorder.value = scrollTop > 0
+}
+
 const route = useRoute()
 const activeMenu = computed(() => {
   return route.path
@@ -18,8 +23,12 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
 <template>
   <el-aside class="app-layout__sidebar" :class="{ 'collapse-sidebar': collapseSidebar }">
-    <logo :is-collapse="collapseSidebar" @click="collapseSidebar = !collapseSidebar"></logo>
-    <el-scrollbar>
+    <logo
+      :class="showLogoBorder && 'border-b-border border-b-1'"
+      :is-collapse="collapseSidebar"
+      @click="collapseSidebar = !collapseSidebar"
+    ></logo>
+    <el-scrollbar @scroll="handleMenuScroll">
       <el-menu
         :collapse="collapseSidebar"
         :default-active="activeMenu"
@@ -48,7 +57,7 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
     flex: 1;
 
     :deep(.el-scrollbar__bar.is-vertical) {
-      right: 0 !important;
+      right: 0;
     }
   }
 }
