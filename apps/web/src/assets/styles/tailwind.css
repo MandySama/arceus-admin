@@ -4,4 +4,7 @@
   --color-background: var(--background);
   --color-border: var(--border);
   --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-foreground: var(--foreground);
+  --color-accent-foreground: var(--accent-foreground);
 }
