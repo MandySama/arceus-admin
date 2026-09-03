@@ -1,3 +1,88 @@
 .el-menu {
+  --el-menu-item-height: 48px;
+  --el-menu-sub-item-height: 48px;
+  --el-menu-icon-width: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
 
+  &.el-menu--vertical {
+    padding-block: 2px;
+  }
+
+  /* 垂直菜单-展开, 弹出层 */
+  &:not(.el-menu--collapse) {
+    --el-menu-base-level-padding: 16px;
+    --el-menu-level-padding: 24px;
+
+    .el-menu-item,
+    .el-sub-menu .el-sub-menu__title {
+      margin-inline: 8px;
+
+      .el-icon:not(.el-sub-menu__icon-arrow) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &.el-menu--inline {
+    padding-top: 2px;
+  }
+
+  /* 垂直菜单-折叠 */
+  &.el-menu--collapse {
+    --el-menu-base-level-padding: 0;
+
+    .el-menu-item,
+    .el-sub-menu .el-sub-menu__title {
+      margin-inline: 6px;
+    }
+
+    .el-menu-item .el-menu-tooltip__trigger,
+    .el-sub-menu .el-sub-menu__title {
+      justify-content: center;
+    }
+
+    .el-menu-item .el-menu-tooltip__trigger {
+      width: auto;
+      padding-right: 6px;
+      right: -6px;
+    }
+
+    .el-sub-menu.is-active .el-sub-menu__title {
+      background-color: var(--el-menu-hover-bg-color);
+    }
+  }
+
+  /* 菜单-弹出层 */
+  &.el-menu--popup {
+    border-radius: 6px;
+    padding-block: 4px;
+  }
+
+  .el-menu-item,
+  .el-sub-menu .el-sub-menu__title {
+    border-radius: 8px;
+
+    .el-icon:not(.el-sub-menu__icon-arrow) {
+      font-size: 16px;
+    }
+  }
+
+  .el-menu-item.is-active {
+    background-color: var(--el-menu-hover-bg-color);
+  }
+
+  .el-sub-menu.is-active > .el-sub-menu__title {
+    color: var(--el-menu-active-color);
+  }
+}
+
+.el-popper {
+  --el-popper-border-radius: 6px !important;
+
+  /* 菜单-弹出层 */
+  &:has(.el-menu) {
+    translate: 6px;
+  }
 }

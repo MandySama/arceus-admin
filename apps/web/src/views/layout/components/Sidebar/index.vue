@@ -32,7 +32,7 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
   </el-aside>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .app-layout__sidebar {
   width: 224px;
   background-color: var(--background);
@@ -46,6 +46,10 @@ const { routeList: menuList } = storeToRefs(userInfoStore)
 
   .el-scrollbar {
     flex: 1;
+
+    :deep(.el-scrollbar__bar.is-vertical) {
+      right: 0 !important;
+    }
   }
 }
 </style>
