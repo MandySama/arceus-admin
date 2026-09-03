@@ -3,5 +3,5 @@ body {
 }
 
 .el-menu {
-  --el-menu-border-color: transparent;
+  border-right-style: none !important;
 }
