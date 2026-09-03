@@ -27,7 +27,6 @@ const handleMenuScroll = ({ scrollTop }) => {
     <logo
       :class="showLogoBorder && 'border-b-border border-b-1'"
       :is-collapse="collapseSidebar"
-      @click="collapseSidebar = !collapseSidebar"
     ></logo>
     <el-scrollbar @scroll="handleMenuScroll">
       <el-menu
