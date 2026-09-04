@@ -9,7 +9,7 @@ const { collapseSidebar } = storeToRefs(layoutStore)
   <div class="app-layout__navbar-hamburger group" @click="collapseSidebar = !collapseSidebar">
     <icon
       class="text-foreground group-hover:text-accent-foreground text-lg"
-      :icon="'ant-design:menu-fold-outlined'"
+      :icon="collapseSidebar ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'"
     ></icon>
   </div>
 </template>
