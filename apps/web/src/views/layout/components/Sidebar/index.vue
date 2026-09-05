@@ -3,9 +3,12 @@ import { useLayoutStore, useUserInfoStore } from '@/stores'
 
 import Logo from '../Logo.vue'
 import MenuItem from '../MenuItem.vue'
+import { useResize } from '@/hooks/resize'
 
 const layoutStore = useLayoutStore()
 const { collapseSidebar } = storeToRefs(layoutStore)
+
+const { isMobile } = useResize()
 
 const showLogoBorder = ref(false)
 
@@ -23,7 +26,10 @@ const handleMenuScroll = ({ scrollTop }) => {
 </script>
 
 <template>
-  <el-aside class="app-layout__sidebar" :class="{ 'collapse-sidebar': collapseSidebar }">
+  <el-aside
+    class="app-layout__sidebar"
+    :class="{ 'collapse-sidebar': collapseSidebar, 'is-mobile': isMobile }"
+  >
     <logo
       :class="showLogoBorder && 'border-b-border border-b-1'"
       :is-collapse="collapseSidebar"
@@ -51,6 +57,13 @@ const handleMenuScroll = ({ scrollTop }) => {
 
   &.collapse-sidebar {
     width: 64px;
+  }
+
+  &.is-mobile {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
   }
 
   .el-scrollbar {
