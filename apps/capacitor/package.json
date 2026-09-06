@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm -s -F @arceus/web build:vite --mode dev-android && pnpm -F @arceus/web build:mock && run-p mock:start android:start",
+    "dev": "pnpm -s -F @arceus/web build:vite --mode dev-capacitor && pnpm -F @arceus/web build:mock && run-p mock:start android:start",
     "build": "pnpm -s -F @arceus/web build && cap sync android && android\\gradlew.bat -p android assembleDebug",
     "mock:start": "pnpm -F @arceus/web mock:start",
     "android:start": "cap run android",
