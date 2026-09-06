@@ -31,7 +31,7 @@ const handleMenuScroll = ({ scrollTop }) => {
     :class="{ 'collapse-sidebar': collapseSidebar, 'is-mobile': isMobile }"
   >
     <logo
-      :class="showLogoBorder && 'border-b-border border-b-1'"
+      :class="showLogoBorder ? 'border-b-border border-b-1' : 'border-b-1 border-b-transparent'"
       :is-collapse="collapseSidebar"
     ></logo>
     <el-scrollbar @scroll="handleMenuScroll">
