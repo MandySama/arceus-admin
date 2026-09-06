@@ -15,6 +15,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
+  const isTauriEnv = Boolean(process.env.TAURI_ENV_PLATFORM)
 
   return {
     plugins: [
@@ -41,28 +42,29 @@ export default defineConfig(({ mode }) => {
         autoInstall: true,
       }),
       tailwindcss(),
-      VitePWA({
-        registerType: 'autoUpdate',
-        devOptions: {
-          enabled: true,
-          navigateFallbackAllowlist: [/^\/.*$/],
-        },
-        manifest: {
-          name: env.VITE_APP_TITLE,
-          short_name: env.VITE_APP_TITLE,
-          theme_color: '#fff',
-          icons: [
-            {
-              src: 'pwa-192x192.png',
-              sizes: '192x192',
-            },
-          ],
-        },
-        workbox: {
-          navigateFallbackDenylist: [/^\/api/],
-        },
-      }),
-    ],
+      !isTauriEnv &&
+        VitePWA({
+          registerType: 'autoUpdate',
+          devOptions: {
+            enabled: true,
+            navigateFallbackAllowlist: [/^\/.*$/],
+          },
+          manifest: {
+            name: env.VITE_APP_TITLE,
+            short_name: env.VITE_APP_TITLE,
+            theme_color: '#fff',
+            icons: [
+              {
+                src: 'pwa-192x192.png',
+                sizes: '192x192',
+              },
+            ],
+          },
+          workbox: {
+            navigateFallbackDenylist: [/^\/api/],
+          },
+        }),
+    ].filter(Boolean),
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
