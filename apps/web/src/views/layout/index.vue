@@ -11,15 +11,9 @@ const { collapseSidebar } = storeToRefs(layoutStore)
 
 const route = useRoute()
 
-watch(
-  isMobile,
-  (value) => {
-    collapseSidebar.value = value
-  },
-  {
-    immediate: true,
-  },
-)
+watch(isMobile, (value) => {
+  collapseSidebar.value = value
+})
 
 watch(
   () => route.path,
@@ -29,6 +23,12 @@ watch(
     }
   },
 )
+
+onMounted(() => {
+  if (isMobile.value) {
+    collapseSidebar.value = true
+  }
+})
 </script>
 
 <template>
