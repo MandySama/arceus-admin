@@ -10,18 +10,20 @@ import request from '@/utils/request'
 
 NProgress.configure({ showSpinner: false })
 
+export const homeRoute = {
+  path: '/home',
+  component: () => import('@/views/home/index.vue'),
+  meta: { title: '首页' },
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'Layout',
       component: Layout,
-      children: [
-        {
-          path: '/home',
-          component: () => import('@/views/home/index.vue'),
-        },
-      ],
+      children: [homeRoute],
       redirect: '/login',
     },
     {
@@ -38,7 +40,7 @@ router.beforeEach(async (to) => {
       return '/home'
     } else {
       const userInfoStore = useUserInfoStore()
-      if (!userInfoStore.routeList.length) {
+      if (!userInfoStore.menuList.length) {
         const data = await request.get('/userInfo')
         userInfoStore.setUserInfo(data)
         return { ...to, replace: true }

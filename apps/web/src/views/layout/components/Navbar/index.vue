@@ -1,10 +1,12 @@
 <script setup>
 import Hamburger from './Hamburger.vue'
+import Breadcrumb from './Breadcrumb.vue'
 </script>
 
 <template>
   <el-header class="app-layout__navbar">
     <hamburger></hamburger>
+    <breadcrumb></breadcrumb>
   </el-header>
 </template>
 
