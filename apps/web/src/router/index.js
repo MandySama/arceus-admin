@@ -16,6 +16,10 @@ export const homeRoute = {
   meta: { title: '首页' },
 }
 
+export const isHomeRoute = (route) => {
+  return route.path === homeRoute.path
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
