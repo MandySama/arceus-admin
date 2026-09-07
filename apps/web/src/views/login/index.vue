@@ -133,7 +133,7 @@ onMounted(() => {
               <i-ant-design-loading-outlined />
             </el-icon>
           </template>
-          登录
+          <span>登录</span>
         </el-button>
         <div v-if="enabledRegister" class="mt-[18px] w-70 text-right leading-5">
           <router-link to="/register">注册</router-link>
@@ -143,7 +143,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .login-page {
   height: 100vh;
   display: flex;
