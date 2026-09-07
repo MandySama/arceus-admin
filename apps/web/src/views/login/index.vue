@@ -136,14 +136,14 @@ onMounted(() => {
           <span>登录</span>
         </el-button>
         <div v-if="enabledRegister" class="mt-[18px] w-70 text-right leading-5">
-          <router-link to="/register">注册</router-link>
+          <router-link class="text-[plum]" to="/register">注册</router-link>
         </div>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .login-page {
   height: 100vh;
   display: flex;
@@ -186,10 +186,6 @@ onMounted(() => {
       background-image: linear-gradient(-200deg, #aac2ee, #fac0e7);
       background-position-x: -280px;
     }
-  }
-
-  a {
-    color: plum;
   }
 }
 </style>
