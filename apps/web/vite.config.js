@@ -15,7 +15,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  const isTauriEnv = Boolean(process.env.TAURI_ENV_PLATFORM)
+  const isTauriEnv = process.env.TAURI_ENV_PLATFORM
 
   return {
     plugins: [

@@ -1,6 +1,6 @@
 import { defineHandler } from 'nitro'
 
-const routeList = [
+const menuList = [
   {
     menuId: 1,
     menuName: '权限管理',
@@ -90,7 +90,7 @@ export default defineHandler(() => {
   return {
     code: 200,
     data: {
-      routeList,
+      menuList,
     },
     message: null,
   }

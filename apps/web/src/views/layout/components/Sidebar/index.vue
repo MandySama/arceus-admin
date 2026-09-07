@@ -18,7 +18,7 @@ const activeMenu = computed(() => {
 })
 
 const userInfoStore = useUserInfoStore()
-const { routeList: menuList } = storeToRefs(userInfoStore)
+const { menuList } = storeToRefs(userInfoStore)
 
 const handleMenuScroll = ({ scrollTop }) => {
   showLogoBorder.value = scrollTop > 0

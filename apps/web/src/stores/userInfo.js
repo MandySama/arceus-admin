@@ -1,6 +1,6 @@
 import Layout from '@/views/layout/index.vue'
 
-const homeRoute = {
+const homeMenu = {
   menuId: 0,
   menuName: '首页',
   menuType: 'menu',
@@ -12,42 +12,50 @@ const homeRoute = {
 const modules = import.meta.glob(['@/views/**/*.vue', '!@/views/layout/**/*.vue'])
 
 export const useUserInfoStore = defineStore('userInfo', () => {
-  const routeList = ref([])
+  const menuList = ref([])
 
   const router = useRouter()
 
-  const getRouteChildren = (routeList) => {
-    return routeList.flatMap((item) => {
+  const getRouteChildren = (menuList) => {
+    return menuList.flatMap((item) => {
       if (item.menuType === 'dir') {
         return getRouteChildren(item.children)
       } else {
         return {
           path: item.routePath,
           component: modules[`/src/views${item.routePath}/index.vue`],
+          meta: { title: item.menuName },
         }
       }
     })
   }
 
-  const addRouteList = (routeList) => {
-    routeList.forEach((item) => {
+  const addRouteList = (menuList) => {
+    menuList.forEach((item) => {
       if (item.menuType === 'dir') {
         router.addRoute({
           path: item.routePath,
           component: Layout,
           children: getRouteChildren(item.children),
+          meta: { title: item.menuName },
+        })
+      } else {
+        router.addRoute('Layout', {
+          path: item.routePath,
+          component: modules[`/src/views${item.routePath}/index.vue`],
+          meta: { title: item.menuName },
         })
       }
     })
   }
 
   const setUserInfo = (userInfo) => {
-    routeList.value = [homeRoute, ...userInfo.routeList]
-    addRouteList(routeList.value)
+    menuList.value = [homeMenu, ...userInfo.menuList]
+    addRouteList(userInfo.menuList)
   }
 
   return {
-    routeList,
+    menuList,
     setUserInfo,
   }
 })
