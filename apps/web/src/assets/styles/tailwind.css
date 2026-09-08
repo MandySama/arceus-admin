@@ -7,4 +7,5 @@
   --color-accent: var(--accent);
   --color-foreground: var(--foreground);
   --color-accent-foreground: var(--accent-foreground);
+  --color-muted-foreground: var(--muted-foreground);
 }

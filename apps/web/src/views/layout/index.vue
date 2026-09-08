@@ -22,19 +22,14 @@ watch(
       collapseSidebar.value = true
     }
   },
+  { immediate: true },
 )
-
-onMounted(() => {
-  if (isMobile.value) {
-    collapseSidebar.value = true
-  }
-})
 </script>
 
 <template>
   <el-container class="app-layout">
     <sidebar v-if="!isMobile || !collapseSidebar"></sidebar>
-    <el-container direction="vertical">
+    <el-container class="flex-col!">
       <navbar></navbar>
     </el-container>
     <div

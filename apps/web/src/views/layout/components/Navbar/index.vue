@@ -7,7 +7,7 @@ import Search from './Search.vue'
 <template>
   <el-header class="app-layout__navbar">
     <hamburger></hamburger>
-    <breadcrumb class="block max-lg:hidden"></breadcrumb>
+    <breadcrumb></breadcrumb>
     <div class="ml-auto">
       <search></search>
     </div>

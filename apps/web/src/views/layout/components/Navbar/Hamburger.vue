@@ -6,26 +6,15 @@ const { collapseSidebar } = storeToRefs(layoutStore)
 </script>
 
 <template>
-  <div class="app-layout__navbar-hamburger group" @click="collapseSidebar = !collapseSidebar">
+  <div
+    class="group hover:bg-accent flex size-8 cursor-pointer items-center justify-center rounded-md"
+    @click="collapseSidebar = !collapseSidebar"
+  >
     <icon
-      class="text-foreground group-hover:text-accent-foreground text-lg"
+      class="text-foreground group-hover:text-accent-foreground size-4.5"
       :icon="collapseSidebar ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'"
     ></icon>
   </div>
 </template>
 
-<style scoped>
-.app-layout__navbar-hamburger {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--accent);
-  }
-}
-</style>
+<style scoped></style>

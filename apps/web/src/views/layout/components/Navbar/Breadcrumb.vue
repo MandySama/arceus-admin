@@ -9,7 +9,7 @@ const breadcrumbList = computed(() => {
 </script>
 
 <template>
-  <el-breadcrumb>
+  <el-breadcrumb class="hidden lg:block">
     <el-breadcrumb-item
       v-for="item in breadcrumbList"
       :key="item.path"
