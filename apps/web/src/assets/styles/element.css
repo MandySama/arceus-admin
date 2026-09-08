@@ -86,3 +86,43 @@
     translate: 6px;
   }
 }
+
+.el-dialog {
+  --el-dialog-border-radius: 12px !important;
+  --el-dialog-padding-primary: 0px !important;
+
+  .el-dialog__header {
+    height: 48px;
+    padding-inline: 16px;
+    border-bottom: 1px solid var(--border);
+
+    .el-dialog__headerbtn {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 12px;
+      right: 12px;
+      border-radius: 12px;
+
+      &:hover {
+        background-color: var(--accent);
+
+        .el-icon.el-dialog__close {
+          color: var(--foreground);
+        }
+      }
+
+      .el-icon.el-dialog__close {
+        color: var(--muted-foreground);
+      }
+    }
+  }
+
+  .el-dialog__footer {
+    height: 36px;
+    padding-inline: 16px;
+    border-top: 1px solid var(--border);
+  }
+}
