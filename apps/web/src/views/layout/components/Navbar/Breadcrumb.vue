@@ -10,11 +10,12 @@ const breadcrumbList = computed(() => {
 
 <template>
   <el-breadcrumb>
-    <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
-      <router-link v-if="isHomeRoute(item)" class="font-normal!" :to="item.path">
-        {{ item.meta.title }}
-      </router-link>
-      <span v-else>{{ item.meta.title }}</span>
+    <el-breadcrumb-item
+      v-for="item in breadcrumbList"
+      :key="item.path"
+      :to="isHomeRoute(item) ? item.path : ''"
+    >
+      {{ item.meta.title }}
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
@@ -23,6 +24,7 @@ const breadcrumbList = computed(() => {
 .el-breadcrumb {
   margin-left: 8px;
 
+  :deep(.el-breadcrumb__inner.is-link),
   :deep(.el-breadcrumb__separator) {
     font-weight: 400;
   }
