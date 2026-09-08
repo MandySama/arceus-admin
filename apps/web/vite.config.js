@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => {
         resolvers: [
           ElementPlusResolver(),
           IconsResolver({
-            enabledCollections: ['ant-design'],
+            enabledCollections: ['ant-design', 'lucide'],
           }),
         ],
       }),
