@@ -5,3 +5,13 @@ body {
 .el-menu {
   border-right-style: none !important;
 }
+
+.el-dialog.is-fullscreen {
+  display: flex;
+  flex-direction: column;
+
+  .el-dialog__body {
+    flex: 1;
+  }
+}
+
