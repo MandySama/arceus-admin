@@ -1,5 +1,9 @@
 <script setup>
+import { useResize } from '@/hooks/resize'
+
 const dialogVisible = ref(true)
+
+const { isMobile } = useResize()
 
 const keyword = ref('')
 </script>
@@ -22,7 +26,7 @@ const keyword = ref('')
     </div>
   </div>
 
-  <el-dialog v-model="dialogVisible">
+  <el-dialog v-model="dialogVisible" width="600px" :fullscreen="isMobile" top="10vh">
     <template #header>
       <div class="flex h-full items-center">
         <i-lucide-search class="text-muted-foreground mr-2 size-4" />
@@ -63,13 +67,18 @@ const keyword = ref('')
 </template>
 
 <style scoped>
+@reference '@/assets/styles/tailwind.css';
+
+* {
+  font-family: 'Noto Sans SC', 'Microsoft YaHei UI', serif;
+}
+
 .search-dialog__shortcut {
   display: flex;
   align-items: center;
 
   .search-dialog__shortcut-key {
-    width: 20px;
-    height: 20px;
+    @apply size-5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,14 +90,12 @@ const keyword = ref('')
       0 1px 2px 1px #1e235a66;
 
     svg {
-      width: 12px;
-      height: 12px;
+      @apply size-3;
     }
   }
 
   .search-dialog__shortcut-label {
-    font-size: 12px;
-    line-height: 16px;
+    @apply text-xs;
   }
 }
 </style>
