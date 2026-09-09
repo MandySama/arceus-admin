@@ -29,7 +29,7 @@ watch(
 <template>
   <el-container class="app-layout">
     <sidebar v-if="!isMobile || !collapseSidebar"></sidebar>
-    <el-container class="flex-col!">
+    <el-container direction="vertical">
       <navbar></navbar>
     </el-container>
     <div

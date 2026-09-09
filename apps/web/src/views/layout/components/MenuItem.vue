@@ -19,7 +19,7 @@ const handleMenuClick = (item) => {
     :index="item.routePath"
     @click="handleMenuClick(item)"
   >
-    <el-icon>
+    <el-icon :size="16">
       <icon :icon="item.icon"></icon>
     </el-icon>
     <template #title>
@@ -28,7 +28,7 @@ const handleMenuClick = (item) => {
   </el-menu-item>
   <el-sub-menu v-else :index="item.routePath">
     <template #title>
-      <el-icon>
+      <el-icon :size="16">
         <icon :icon="item.icon"></icon>
       </el-icon>
       <span>{{ item.menuName }}</span>
