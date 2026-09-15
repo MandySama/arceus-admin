@@ -6,12 +6,16 @@ body {
   border-right-style: none !important;
 }
 
-.el-dialog.is-fullscreen {
+.el-dialog {
+  margin-bottom: 0 !important;
   display: flex;
   flex-direction: column;
 
   .el-dialog__body {
+    min-height: 0;
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 }
 

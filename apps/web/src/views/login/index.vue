@@ -135,7 +135,7 @@ onMounted(() => {
           </template>
           <span>登录</span>
         </el-button>
-        <div v-if="enabledRegister" class="mt-[18px] w-70 text-right leading-5">
+        <div v-if="enabledRegister" class="mt-4.5 w-70 text-right leading-5">
           <router-link class="text-[plum]" to="/register">注册</router-link>
         </div>
       </el-form-item>

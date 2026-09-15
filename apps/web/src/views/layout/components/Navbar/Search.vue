@@ -1,11 +1,17 @@
 <script setup>
 import { useResize } from '@/hooks/resize'
+import { useUserInfoStore } from '@/stores'
 
 const dialogVisible = ref(true)
 
 const { isMobile } = useResize()
 
 const keyword = ref('')
+
+const userInfoStore = useUserInfoStore()
+const { menuList } = storeToRefs(userInfoStore)
+
+const searchResult = ref([...menuList.value])
 </script>
 
 <template>
@@ -25,10 +31,15 @@ const keyword = ref('')
       <kbd>Ctrl K</kbd>
     </div>
   </div>
-
-  <el-dialog v-model="dialogVisible" width="600px" :fullscreen="isMobile" top="10vh">
+  <el-dialog
+    v-model="dialogVisible"
+    :class="!isMobile && 'max-h-[80vh] min-h-[min(244px,80vh)]'"
+    width="600px"
+    :fullscreen="isMobile"
+    top="10vh"
+  >
     <template #header>
-      <div class="flex h-full items-center">
+      <div class="flex h-full items-center py-1.5">
         <i-lucide-search class="text-muted-foreground mr-2 size-4" />
         <input
           v-model="keyword"
@@ -37,7 +48,12 @@ const keyword = ref('')
         />
       </div>
     </template>
-    <div class="h-44"></div>
+    <div
+      v-if="!searchResult.length || 1"
+      class="text-muted-foreground flex h-40 items-center justify-center text-sm"
+    >
+      暂无搜索结果
+    </div>
     <template #footer>
       <div class="text-foreground flex h-full items-center gap-x-4">
         <div class="search-dialog__shortcut">
@@ -68,10 +84,6 @@ const keyword = ref('')
 
 <style scoped>
 @reference '@/assets/styles/tailwind.css';
-
-* {
-  font-family: 'Noto Sans SC', 'Microsoft YaHei UI', serif;
-}
 
 .search-dialog__shortcut {
   display: flex;

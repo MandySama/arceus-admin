@@ -86,20 +86,19 @@
 .el-dialog {
   --el-dialog-border-radius: 12px !important;
   --el-dialog-padding-primary: 0px !important;
+  font-family: 'Noto Sans SC', 'Microsoft YaHei UI', serif;
 
   .el-dialog__header {
-    height: 48px;
-    padding-inline: 16px;
-    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
 
     .el-dialog__headerbtn {
       width: 24px;
       height: 24px;
+      top: 12px;
+      right: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      top: 12px;
-      right: 12px;
       border-radius: 12px;
 
       &:hover {
@@ -116,9 +115,17 @@
     }
   }
 
+  &:has(.el-dialog__body:not(:empty)) {
+    .el-dialog__header {
+      border-bottom: 1px solid var(--el-border-color-lighter);
+    }
+
+    .el-dialog__footer {
+      border-top: 1px solid var(--el-border-color-lighter);
+    }
+  }
+
   .el-dialog__footer {
-    height: 36px;
-    padding-inline: 16px;
-    border-top: 1px solid var(--border);
+    padding: 8px 16px;
   }
 }
