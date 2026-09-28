@@ -33,7 +33,7 @@ const searchResult = ref([...menuList.value])
   </div>
   <el-dialog
     v-model="dialogVisible"
-    :class="!isMobile && 'max-h-[80vh] min-h-[min(244px,80vh)]'"
+    :class="!isMobile && 'max-h-[80vh] min-h-[min(84px,80vh)]'"
     width="600px"
     :fullscreen="isMobile"
     top="10vh"
@@ -49,11 +49,12 @@ const searchResult = ref([...menuList.value])
       </div>
     </template>
     <div
-      v-if="!searchResult.length || 1"
+      v-if="!searchResult.length"
       class="text-muted-foreground flex h-40 items-center justify-center text-sm"
     >
       暂无搜索结果
     </div>
+    <div v-else></div>
     <template #footer>
       <div class="text-foreground flex h-full items-center gap-x-4">
         <div class="search-dialog__shortcut">

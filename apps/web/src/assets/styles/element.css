@@ -80,6 +80,10 @@
   /* 菜单-弹出层 */
   &:has(.el-menu) {
     translate: 6px;
+
+    .el-popper {
+      translate: 8px;
+    }
   }
 }
 
@@ -90,6 +94,7 @@
 
   .el-dialog__header {
     padding: 8px 16px;
+    min-height: 48px;
 
     .el-dialog__headerbtn {
       width: 24px;
@@ -127,5 +132,6 @@
 
   .el-dialog__footer {
     padding: 8px 16px;
+    min-height: 36px;
   }
 }
